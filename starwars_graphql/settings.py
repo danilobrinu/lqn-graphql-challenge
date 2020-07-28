@@ -39,7 +39,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = ["graphene_django"]
 
 LOCAL_APPS = ["api"]
 
@@ -118,3 +118,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+GRAPHENE = {
+    "SCHEMA": "starwars_graphql.schema.schema",
+    "MIDDLEWARE": ["graphene_django.debug.DjangoDebugMiddleware",],
+}
