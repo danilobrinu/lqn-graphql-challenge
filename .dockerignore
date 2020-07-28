@@ -1,0 +1,7 @@
+# Environments
+venv/
+.env
+.env.*
+
+# Misc
+.vscode
