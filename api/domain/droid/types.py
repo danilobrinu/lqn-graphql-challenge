@@ -36,14 +36,25 @@ class DroidWhereInput(InputObjectType):
     name_ends_with = String()
     name_in = String()
     name_not_in = String()
+    primary_function = String()
+    primary_function_not = String()
+    primary_function_contains = String()
+    primary_function_not_contains = String()
+    primary_function_starts_with = String()
+    primary_function_not_starts_with = String()
+    primary_function_ends_with = String()
+    primary_function_in = String()
+    primary_function_not_in = String()
 
 
 class DroidCreateInput(InputObjectType):
     name = String(required=True)
+    primary_function = String(required=True)
 
 
 class DroidUpdateInput(InputObjectType):
     name = String()
+    primary_function = String()
 
 
 DroidFilterConnection = create_open_crud_filter_connection(

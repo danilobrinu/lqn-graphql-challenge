@@ -24,6 +24,32 @@ class DroidFilter(FilterSet):
     )
     name_in = CharFilter(field_name="name", lookup_expr="in")
     name_not_in = CharFilter(field_name="name", lookup_expr="in", exclude=True)
+    primary_function = CharFilter(field_name="primary_function", lookup_expr="iexact")
+    primary_function_not = CharFilter(
+        field_name="primary_function", lookup_expr="iexact", exclude=True
+    )
+    primary_function_contains = CharFilter(
+        field_name="primary_function", lookup_expr="contains"
+    )
+    primary_function_not_contains = CharFilter(
+        field_name="primary_function", lookup_expr="icontains", exclude=True
+    )
+    primary_function_starts_with = CharFilter(
+        field_name="primary_function", lookup_expr="istartswith"
+    )
+    primary_function_not_starts_with = CharFilter(
+        field_name="primary_function", lookup_expr="istartswith"
+    )
+    primary_function_ends_with = CharFilter(
+        field_name="primary_function", lookup_expr="endswith"
+    )
+    primary_function_not_ends_with = CharFilter(
+        field_name="primary_function", lookup_expr="endswith", exclude=True
+    )
+    primary_function_in = CharFilter(field_name="primary_function", lookup_expr="in")
+    primary_function_not_in = CharFilter(
+        field_name="primary_function", lookup_expr="in", exclude=True
+    )
 
     class Meta:
         model = models.Droid
