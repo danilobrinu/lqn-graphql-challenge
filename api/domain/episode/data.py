@@ -15,7 +15,7 @@ def create_episode(data: types.EpisodeCreateInput) -> models.Episode:
     return episode
 
 
-def get_episode(where: types.EpisodeWhereUniqueInput) -> Union[models.Episode, None]:
+def get_episode(where: types.EpisodeWhereUniqueInput) -> models.Episode:
     _, episode_id = from_global_id(where.get())
     episode = models.Episode.objects.get(id=episode_id)
     return episode
@@ -25,7 +25,7 @@ def update_episode(
     where: types.EpisodeWhereUniqueInput, data: types.EpisodeUpdateInput
 ) -> models.Episode:
     episode = get_episode(where)
-    episode.save(**data)
+    episode.update(**data)
     return episode
 
 

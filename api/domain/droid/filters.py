@@ -2,11 +2,10 @@
 
 # Third-party packages
 from django_filters import FilterSet
-from django_filters import CharFilter, NumberFilter
+from django_filters import CharFilter
 
 # Local packages
 from . import models
-from . import types
 
 
 class DroidFilter(FilterSet):

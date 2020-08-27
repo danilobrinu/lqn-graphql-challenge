@@ -8,9 +8,14 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
 """
 
 import os
+import dotenv
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'starwars_graphql.settings')
+dotenv.load_dotenv()
+
+ENVIRONMENT_MODULE = os.getenv("ENVIRONMENT_MODULE", "develop")
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"config.settings.{ENVIRONMENT_MODULE}")
 
 application = get_asgi_application()

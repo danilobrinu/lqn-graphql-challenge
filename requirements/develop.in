@@ -1,4 +1,6 @@
 -r common.in
 
 black
-pylint
+flake8
+pytest-django
+faker

@@ -15,7 +15,7 @@ def create_human(data: types.HumanCreateInput) -> models.Human:
     return human
 
 
-def get_human(where: types.HumanWhereUniqueInput) -> Union[models.Human, None]:
+def get_human(where: types.HumanWhereUniqueInput) -> models.Human:
     _, human_id = from_global_id(where.get())
     human = models.Human.objects.get(id=human_id)
     return human
@@ -25,7 +25,7 @@ def update_human(
     where: types.HumanWhereUniqueInput, data: types.HumanUpdateInput
 ) -> models.Human:
     human = get_human(where)
-    human.save(**data)
+    human.update(**data)
     return human
 
 

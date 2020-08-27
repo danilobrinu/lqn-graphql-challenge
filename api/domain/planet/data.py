@@ -15,7 +15,7 @@ def create_planet(data: types.PlanetCreateInput) -> models.Planet:
     return planet
 
 
-def get_planet(where: types.PlanetWhereUniqueInput) -> Union[models.Planet, None]:
+def get_planet(where: types.PlanetWhereUniqueInput) -> models.Planet:
     _, planet_id = from_global_id(where.get())
     planet = models.Planet.objects.get(id=planet_id)
     return planet
@@ -25,7 +25,7 @@ def update_planet(
     where: types.PlanetWhereUniqueInput, data: types.PlanetUpdateInput
 ) -> models.Planet:
     planet = get_planet(where)
-    planet.save(**data)
+    planet.update(**data)
     return planet
 
 

@@ -1,5 +1,9 @@
+# Built-in packages
+
+# Third-party packages
 from django.db import models
 
+# Local packages
 from ..character.models import Character
 
 

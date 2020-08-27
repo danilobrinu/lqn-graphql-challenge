@@ -1,7 +1,11 @@
+# Built-in packages
+
+# Third-party packages
 from django.db import models
 
-from api.domain.person.models import Person
-from api.domain.planet.models import Planet
+# Local packages
+from ..person.models import Person
+from ..planet.models import Planet
 
 
 class Episode(models.Model):

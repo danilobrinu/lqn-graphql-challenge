@@ -15,7 +15,7 @@ from .data import get_human, create_human, update_human, delete_human
 
 
 class CreateHuman(types.HumanOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         data = types.HumanCreateInput(required=True)
 
     @atomic
@@ -24,7 +24,7 @@ class CreateHuman(types.HumanOutputMutation, Mutation):
 
 
 class UpdateHuman(types.HumanOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         data = types.HumanUpdateInput(required=True)
         where = types.HumanWhereUniqueInput(required=True)
 
@@ -36,7 +36,7 @@ class UpdateHuman(types.HumanOutputMutation, Mutation):
 
 
 class DeleteHuman(types.HumanOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         where = types.HumanWhereUniqueInput(required=True)
 
     @atomic

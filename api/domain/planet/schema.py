@@ -15,7 +15,7 @@ from .data import get_planet, create_planet, update_planet, delete_planet
 
 
 class CreatePlanet(types.PlanetOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         data = types.PlanetCreateInput(required=True)
 
     @atomic
@@ -24,7 +24,7 @@ class CreatePlanet(types.PlanetOutputMutation, Mutation):
 
 
 class UpdatePlanet(types.PlanetOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         data = types.PlanetUpdateInput(required=True)
         where = types.PlanetWhereUniqueInput(required=True)
 
@@ -36,7 +36,7 @@ class UpdatePlanet(types.PlanetOutputMutation, Mutation):
 
 
 class DeletePlanet(types.PlanetOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         where = types.PlanetWhereUniqueInput(required=True)
 
     @atomic

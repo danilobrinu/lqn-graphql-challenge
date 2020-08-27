@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, Float
+from graphene import Node, ID, String
 from graphene import ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
@@ -9,13 +9,15 @@ from graphene_django import DjangoObjectType
 from api.utils import create_open_crud_filter_connection
 from . import models
 from . import filters
+from ..character.types import Character
 
 
-class Droid(DjangoObjectType):
+class Droid(DjangoObjectType, interfaces=(Character, Node)):
+    """An object with an ID"""
+
     class Meta:
         model = models.Droid
         filter_fields = []
-        interfaces = (Node,)
 
 
 class DroidOutputMutation(ObjectType):

@@ -6,7 +6,6 @@ from django_filters import CharFilter
 
 # Local packages
 from . import models
-from . import types
 
 
 class PlanetFilter(FilterSet):

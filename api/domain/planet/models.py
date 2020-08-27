@@ -1,7 +1,13 @@
+# Built-in packages
+
+# Third-party packages
 from django.db import models
 
+# Local packages
+from ...utils import BaseModel
 
-class Planet(models.Model):
+
+class Planet(BaseModel):
     name = models.CharField(max_length=100)
 
     def __str__(self):

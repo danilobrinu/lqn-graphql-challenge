@@ -1,7 +1,10 @@
 # Environments
-venv/
 .env
 .env.*
+
+# Virtual Environments
+env/
+venv/
 
 # Misc
 .vscode

@@ -2,48 +2,49 @@
 
 # Third-party packages
 from django.db.transaction import atomic
-from graphene import ObjectType, Mutation
+from graphene import ObjectType, Mutation, ResolveInfo
 from graphene.relay import Node
 
 # Local packages
-from api.utils import create_open_crud_filter_connection
 from . import models
 from . import types
-from . import filters
-
-from .data import get_starship, create_starship, update_starship, delete_starship
+from .data import create_starship, update_starship, delete_starship
 
 
 class CreateStarship(types.StarshipOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         data = types.StarshipCreateInput(required=True)
 
     @atomic
-    def mutate(self, info, data: types.StarshipCreateInput):
+    def mutate(
+        self, info: ResolveInfo, data: types.StarshipCreateInput
+    ) -> models.Starship:
         return create_starship(data)
 
 
 class UpdateStarship(types.StarshipOutputMutation, Mutation):
-    class Input:
-        data = types.StarshipUpdateInput(required=True)
+    class Arguments:
         where = types.StarshipWhereUniqueInput(required=True)
+        data = types.StarshipUpdateInput(required=True)
 
     @atomic
     def mutate(
         self,
-        info,
+        info: ResolveInfo,
         where: types.StarshipWhereUniqueInput,
         data: types.StarshipUpdateInput,
-    ):
+    ) -> models.Starship:
         return update_starship(where, data)
 
 
 class DeleteStarship(types.StarshipOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         where = types.StarshipWhereUniqueInput(required=True)
 
     @atomic
-    def mutate(self, info, where: types.StarshipWhereUniqueInput):
+    def mutate(
+        self, info: ResolveInfo, where: types.StarshipWhereUniqueInput
+    ) -> models.Starship:
         return delete_starship(where)
 
 

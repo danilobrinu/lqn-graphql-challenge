@@ -2,11 +2,10 @@
 
 # Third-party packages
 from django_filters import FilterSet
-from django_filters import CharFilter, DateFilter
+from django_filters import CharFilter
 
 # Local packages
 from . import models
-from . import types
 
 
 class EpisodeFilter(FilterSet):

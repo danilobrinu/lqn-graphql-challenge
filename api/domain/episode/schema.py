@@ -15,7 +15,7 @@ from .data import get_episode, create_episode, update_episode, delete_episode
 
 
 class CreateEpisode(types.EpisodeOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         data = types.EpisodeCreateInput(required=True)
 
     @atomic
@@ -24,7 +24,7 @@ class CreateEpisode(types.EpisodeOutputMutation, Mutation):
 
 
 class UpdateEpisode(types.EpisodeOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         data = types.EpisodeUpdateInput(required=True)
         where = types.EpisodeWhereUniqueInput(required=True)
 
@@ -39,7 +39,7 @@ class UpdateEpisode(types.EpisodeOutputMutation, Mutation):
 
 
 class DeleteEpisode(types.EpisodeOutputMutation, Mutation):
-    class Input:
+    class Arguments:
         where = types.EpisodeWhereUniqueInput(required=True)
 
     @atomic

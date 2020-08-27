@@ -1,0 +1,11 @@
+query getStarships {
+    starships {
+        edges {
+            node {
+                id
+                name
+                length
+            }
+        }
+    }
+}

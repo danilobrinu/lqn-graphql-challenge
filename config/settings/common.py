@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+# Environment Module
+ENVIRONMENT_MODULE = os.getenv("ENVIRONMENT_MODULE", "develop")
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -55,7 +58,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "starwars_graphql.urls"
+ROOT_URLCONF = f"config.urls.{ENVIRONMENT_MODULE}"
 
 TEMPLATES = [
     {
@@ -73,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "starwars_graphql.wsgi.application"
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
@@ -120,6 +123,6 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 GRAPHENE = {
-    "SCHEMA": "starwars_graphql.schema.schema",
+    "SCHEMA": "config.schema.schema",
     "MIDDLEWARE": ["graphene_django.debug.DjangoDebugMiddleware",],
 }

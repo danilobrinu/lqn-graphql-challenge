@@ -1,10 +1,21 @@
 # Built-in packages
 
 # Third-party packages
+from django.db.models import Model
 from django.core.exceptions import ValidationError
 from graphene_django.filter import DjangoFilterConnectionField
 
 # Local packages
+
+
+class BaseModel(Model):
+    def update(self, **kwargs):
+        for field, value in kwargs.items():
+            setattr(self, field, value)
+        return self.save()
+
+    class Meta:
+        abstract = True
 
 
 def create_open_crud_filter_connection(name, filterset_class):

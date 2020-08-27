@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, Float, Date, Field, List, NonNull
+from graphene import Node, ID, String, Date, List, NonNull
 from graphene import ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
@@ -14,6 +14,8 @@ from ..planet.types import PlanetManyInput
 
 
 class Episode(DjangoObjectType):
+    """A Episode is a single film."""
+
     class Meta:
         model = models.Episode
         filter_fields = []

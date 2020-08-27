@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, Float
+from graphene import Node, ID, String
 from graphene import ObjectType, InputObjectType, List, NonNull
 from graphene_django import DjangoObjectType
 
@@ -12,6 +12,8 @@ from . import filters
 
 
 class Planet(DjangoObjectType):
+    """A Planet is a large mass, planet or planetoid in the Star Wars Universe, at the time of 0 ABY."""
+
     class Meta:
         model = models.Planet
         filter_fields = []

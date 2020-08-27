@@ -1,12 +1,12 @@
 # Built-in packages
-from uuid import uuid4
 
 # Third-party package
-from django.db import models
 
 # Local Packages
-from .domain.starship.models import *
-from .domain.person.models import *
-from .domain.planet.models import *
-from .domain.episode.models import *
-from .domain.human.models import *
+from .domain.character.models import Character # noqa
+from .domain.starship.models import Starship  # noqa
+from .domain.person.models import Person  # noqa
+from .domain.planet.models import Planet  # noqa
+from .domain.episode.models import Episode  # noqa
+from .domain.human.models import Human  # noqa
+from .domain.droid.models import Droid  # noqa

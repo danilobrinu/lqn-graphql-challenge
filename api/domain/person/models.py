@@ -3,8 +3,11 @@
 # Third-party package
 from django.db import models
 
+# Local packages
+from ...utils import BaseModel
 
-class Person(models.Model):
+
+class Person(BaseModel):
     fist_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 

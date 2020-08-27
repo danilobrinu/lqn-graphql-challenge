@@ -15,8 +15,8 @@ def create_starship(data: types.StarshipCreateInput) -> models.Starship:
     return starship
 
 
-def get_starship(where: types.StarshipWhereUniqueInput) -> Union[models.Starship, None]:
-    _, starship_id = from_global_id(where.get())
+def get_starship(where: types.StarshipWhereUniqueInput) -> models.Starship:
+    _, starship_id = from_global_id(where.get("id"))
     starship = models.Starship.objects.get(id=starship_id)
     return starship
 
@@ -25,7 +25,7 @@ def update_starship(
     where: types.StarshipWhereUniqueInput, data: types.StarshipUpdateInput
 ) -> models.Starship:
     starship = get_starship(where)
-    starship.save(**data)
+    starship.update(**data)
     return starship
 
 

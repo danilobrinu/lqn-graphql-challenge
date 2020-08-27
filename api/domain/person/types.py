@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, Float
+from graphene import Node, ID, String
 from graphene import ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
@@ -12,6 +12,8 @@ from . import filters
 
 
 class Person(DjangoObjectType):
+    """A Person is a person related to the Episode sucn as a Director or Producer. """
+
     class Meta:
         model = models.Person
         filter_fields = []

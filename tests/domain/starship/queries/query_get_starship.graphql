@@ -1,0 +1,7 @@
+query getStarship($id: ID!) {
+    starship(id: $id) {
+        id
+        name
+        length
+    }
+}

@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, Float, List, NonNull
+from graphene import Node, ID, String, List, NonNull
 from graphene import ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
@@ -9,13 +9,15 @@ from graphene_django import DjangoObjectType
 from api.utils import create_open_crud_filter_connection
 from . import models
 from . import filters
+from ..character.types import Character
 
 
-class Human(DjangoObjectType):
+class Human(DjangoObjectType, interfaces=(Character, Node,)):
+    """A Human is an character within the Star Wars universe."""
+
     class Meta:
         model = models.Human
         filter_fields = []
-        interfaces = (Node,)
 
 
 class HumanOutputMutation(ObjectType):

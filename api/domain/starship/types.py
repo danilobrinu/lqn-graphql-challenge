@@ -12,6 +12,8 @@ from . import filters
 
 
 class Starship(DjangoObjectType):
+    """A Starship is a single transport craft that has hyperdrive capability."""
+
     class Meta:
         model = models.Starship
         filter_fields = []

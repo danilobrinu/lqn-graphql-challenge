@@ -15,8 +15,8 @@ def create_droid(data: types.DroidCreateInput) -> models.Droid:
     return droid
 
 
-def get_droid(where: types.DroidWhereUniqueInput) -> Union[models.Droid, None]:
-    _, droid_id = from_global_id(where.get())
+def get_droid(where: types.DroidWhereUniqueInput) -> models.Droid:
+    _, droid_id = from_global_id(where.get("id"))
     droid = models.Droid.objects.get(id=droid_id)
     return droid
 
@@ -25,7 +25,7 @@ def update_droid(
     where: types.DroidWhereUniqueInput, data: types.DroidUpdateInput
 ) -> models.Droid:
     droid = get_droid(where)
-    droid.save(**data)
+    droid.update(**data)
     return droid
 
 
