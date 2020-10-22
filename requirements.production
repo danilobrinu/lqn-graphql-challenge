@@ -8,13 +8,14 @@ aniso8601==7.0.0          # via graphene
 asgiref==3.2.10           # via django
 django-filter==2.3.0      # via -r requirements\common.in
 django-graphql-jwt==0.3.1  # via -r requirements\common.in
-django==3.0               # via -r requirements\common.in, django-filter, django-graphql-jwt, graphene-django
+django==3.1               # via -r requirements\common.in, django-filter, django-graphql-jwt, graphene-django
 graphene-django==2.12.1   # via -r requirements\common.in, django-graphql-jwt
 graphene==2.1.8           # via graphene-django
 graphql-core==2.3.2       # via django-graphql-jwt, graphene, graphene-django, graphql-relay
 graphql-relay==2.0.1      # via graphene
 promise==2.3              # via graphene-django, graphql-core, graphql-relay
 pyjwt==1.7.1              # via django-graphql-jwt
+python-dotenv==0.14.0     # via -r requirements\common.in
 pytz==2020.1              # via django
 rx==1.6.1                 # via graphql-core
 singledispatch==3.4.0.3   # via graphene-django
