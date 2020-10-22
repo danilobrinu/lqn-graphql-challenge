@@ -14,8 +14,8 @@ from .domain.droid.schema import DroidQuery, DroidMutation
 
 class Query(
     StarshipQuery,
-    PlanetQuery,
     PersonQuery,
+    PlanetQuery,
     EpisodeQuery,
     HumanQuery,
     DroidQuery,
@@ -26,6 +26,7 @@ class Query(
 
 class Mutation(
     StarshipMutation,
+    PersonMutation,
     PlanetMutation,
     EpisodeMutation,
     HumanMutation,
