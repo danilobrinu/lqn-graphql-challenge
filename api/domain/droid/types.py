@@ -11,7 +11,7 @@ from api.domain.droid import models, filters
 
 
 class Droid(DjangoObjectType, interfaces=(Character, Node,)):
-    """An object with an ID"""
+    """An object with an ID."""
 
     class Meta:
         model = models.Droid

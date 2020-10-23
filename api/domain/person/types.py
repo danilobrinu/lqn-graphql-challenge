@@ -10,7 +10,7 @@ from api.domain.person import models, filters
 
 
 class Person(DjangoObjectType):
-    """A Person is a person related to the Episode sucn as a Director or Producer. """
+    """A Person is a person related to the Episode sucn as a Director or Producer."""
 
     class Meta:
         model = models.Person

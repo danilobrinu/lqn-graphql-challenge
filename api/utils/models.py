@@ -8,8 +8,7 @@ from django.db.models import Model
 
 
 class BaseModel(Model):
-    def create(self,) -> Any:
-        self.id = None
+    def create(self) -> Any:
         self.save()
 
         return self
@@ -21,7 +20,7 @@ class BaseModel(Model):
 
         return self
 
-    def destroy(self,) -> Any:
+    def destroy(self) -> Any:
         self.delete()
 
         return self

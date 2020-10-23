@@ -8,7 +8,7 @@ from api.domain.episode.types import Episode
 
 
 class Character(Interface):
-    """A Charater is an individual character within the Star Wars universe"""
+    """A Charater is an individual character within the Star Wars universe."""
 
     id = ID()
     name = String()
