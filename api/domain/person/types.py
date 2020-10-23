@@ -1,14 +1,12 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String
-from graphene import ObjectType, InputObjectType
+from graphene import Node, ID, String, ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
 # Local packages
-from api.utils import create_open_crud_filter_connection
-from . import models
-from . import filters
+from api.utils.graphene import create_open_crud_filter_connection_field
+from api.domain.person import models, filters
 
 
 class Person(DjangoObjectType):
@@ -63,6 +61,6 @@ class PersonOneInput(InputObjectType):
     connect = PersonWhereUniqueInput(required=True)
 
 
-PersonFilterConnection = create_open_crud_filter_connection(
+PersonFilterConnectionField = create_open_crud_filter_connection_field(
     "PersonFilterConnection", filters.PersonFilter
 )

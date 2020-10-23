@@ -1,18 +1,15 @@
 # Built-in packages
-from typing import Union
 
 # Third-party packages
 from graphql_relay import from_global_id
 
 # Local packages
-from . import models
-from . import types
+from api.domain.person import models, types
 
 
 def create_person(data: types.PersonCreateInput) -> models.Person:
-    person = models.Person(**data)
-    person.save()
-    return person
+    created_person = models.Person(**data).create()
+    return created_person
 
 
 def get_person(where: types.PersonWhereUniqueInput) -> models.Person:
@@ -24,12 +21,10 @@ def get_person(where: types.PersonWhereUniqueInput) -> models.Person:
 def update_person(
     where: types.PersonWhereUniqueInput, data: types.PersonUpdateInput
 ) -> models.Person:
-    person = get_person(where)
-    person.update(**data)
-    return person
+    updated_person = get_person(where).update(**data)
+    return updated_person
 
 
 def delete_person(where: types.PersonWhereUniqueInput) -> models.Person:
-    person = get_person(where)
-    person.delete()
-    return person
+    deleted_person = get_person(where).destroy()
+    return deleted_person
