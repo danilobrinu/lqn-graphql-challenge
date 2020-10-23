@@ -8,3 +8,4 @@ RUN pip install -r requirements.production
 FROM builder
 WORKDIR /app
 COPY . .
+ENTRYPOINT ["python", "run.py"]
