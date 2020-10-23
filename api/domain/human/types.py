@@ -6,10 +6,9 @@ from graphene import ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
 # Local packages
-from api.utils import create_open_crud_filter_connection
-from . import models
-from . import filters
-from ..character.types import Character
+from api.utils.graphene import create_open_crud_filter_connection_field
+from api.domain.character.types import Character
+from api.domain.human import models, filters
 
 
 class Human(DjangoObjectType, interfaces=(Character, Node,)):
@@ -56,6 +55,6 @@ class HumanUpdateInput(InputObjectType):
     friends = HumanManyInput()
 
 
-HumanFilterConnection = create_open_crud_filter_connection(
+HumanFilterConnectionField = create_open_crud_filter_connection_field(
     "HumanFilterConnection", filters.HumanFilter
 )
