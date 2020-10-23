@@ -46,9 +46,10 @@ def starship_three():
 def test_create_starship_valid_cases(valid_case):
     data, expected_output = valid_case
     starship = create_starship(data)
+    starship_exist = starship is not None
     starship_name = starship.name
 
-    assert starship is not None
+    assert starship_exist
     assert starship_name == expected_output
 
 
@@ -92,11 +93,13 @@ def test_get_starship_does_not_exist():
 def test_update_starship(starship_two):
     where = {"id": to_global_id(Starship.__name__, starship_two.id)}
     data = {"name": "Starship Updated"}
+    expected_output = data.name
     starship = update_starship(where, data)
-    starship_name = starship.name
+    starship_exist = starship is not None
+    starship_name = expected_output
 
-    assert starship is not None
-    assert starship_name == data.name
+    assert starship_exist
+    assert starship_name == expected_output
 
 
 @mark.django_db
