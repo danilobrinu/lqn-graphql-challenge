@@ -18,24 +18,28 @@ MUTATION_PATH = path.join(path.dirname(__file__), "mutations")
 @fixture
 def starship_one():
     starship = create_starship({"name": "Starship One", "length": 11.00})
+
     return starship
 
 
 @fixture
 def starship_two():
     starship = create_starship({"name": "Starship Two", "length": 12.00})
+
     return starship
 
 
 @fixture
 def starship_three():
     starship = create_starship({"name": "Starship Three", "length": 13.00})
+
     return starship
 
 
 @fixture
 def graphql_client():
     client = Client(schema)
+
     return client
 
 
