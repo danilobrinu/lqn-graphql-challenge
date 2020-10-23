@@ -8,6 +8,10 @@ test_patterns = [
 [[analyzers]]
 name = "python"
 enabled = true
+dependency_file_paths = [
+  "requirements.develop",
+  "requirements.production"
+]
 
   [analyzers.meta]
   runtime_version = "3.x.x"
