@@ -50,7 +50,9 @@ class DeleteDroid(types.DroidOutputMutation, Mutation):
 
 class DroidQuery(ObjectType):
     droid = Node.Field(types.Droid)
-    droids = types.DroidFilterConnectionField(types.Droid, where=types.DroidWhereInput())
+    droids = types.DroidFilterConnectionField(
+        types.Droid, where=types.DroidWhereInput()
+    )
 
 
 class DroidMutation(ObjectType):

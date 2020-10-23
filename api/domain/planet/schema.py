@@ -50,7 +50,9 @@ class DeletePlanet(types.PlanetOutputMutation, Mutation):
 
 class PlanetQuery(ObjectType):
     planet = Node.Field(types.Planet)
-    planets = types.PlanetFilterConnectionField(types.Planet, where=types.PlanetWhereInput())
+    planets = types.PlanetFilterConnectionField(
+        types.Planet, where=types.PlanetWhereInput()
+    )
 
 
 class PlanetMutation(ObjectType):

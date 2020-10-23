@@ -48,7 +48,9 @@ class DeleteHuman(types.HumanOutputMutation, Mutation):
 
 class HumanQuery(ObjectType):
     human = Node.Field(types.Human)
-    humans = types.HumanFilterConnectionField(types.Human, where=types.HumanWhereInput())
+    humans = types.HumanFilterConnectionField(
+        types.Human, where=types.HumanWhereInput()
+    )
 
 
 class HumanMutation(ObjectType):

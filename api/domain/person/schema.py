@@ -1,7 +1,6 @@
 # Built-in package
 
 # Third-party packages
-from os import stat
 from django.db.transaction import atomic
 from graphene import ObjectType, Mutation, ResolveInfo
 from graphene.relay import Node
@@ -51,7 +50,9 @@ class DeletePerson(types.PersonOutputMutation, Mutation):
 
 class PersonQuery(ObjectType):
     person = Node.Field(types.Person)
-    persons = types.PersonFilterConnectionField(types.Person, where=types.PersonWhereInput())
+    persons = types.PersonFilterConnectionField(
+        types.Person, where=types.PersonWhereInput()
+    )
 
 
 class PersonMutation(ObjectType):

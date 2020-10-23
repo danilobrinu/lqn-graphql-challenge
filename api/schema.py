@@ -34,4 +34,3 @@ class Mutation(
     ObjectType,
 ):
     pass
-
