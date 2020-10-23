@@ -1,12 +1,12 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, ObjectType, InputObjectType
+from graphene import Node, ID, String, ObjectType, InputObjectType  # skipcq: PYL-W0611
 from graphene_django import DjangoObjectType
 
 # Local packages
 from api.utils.graphene import create_open_crud_filter_connection_field
-from api.domain.character.types import Character
+from api.domain.character.types import Character  # skipcq: PYL-W0611
 from api.domain.droid import models, filters
 
 
