@@ -8,9 +8,9 @@ from graphene_django.filter import DjangoFilterConnectionField
 # Local packages
 
 
-def create_open_crud_filter_connection(
+def create_open_crud_filter_connection_field(
     name, filterset_class
-) -> Annotated[Any, "Custom DjangoFilterConnectionField for OpenCrud connections"]:
+) -> Annotated[Any, "OpenCrudFilterConnectionField"]:
     @classmethod
     def resolve_queryset(
         cls, connection, iterable, info, args, filtering_args, **kwargs
