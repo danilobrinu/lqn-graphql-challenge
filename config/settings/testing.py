@@ -1,5 +1,9 @@
+# Built-in package
 import os
 
+# Third-party packages
+
+# Local packages
 from .common import *  # noqa
 from .common import BASE_DIR
 
