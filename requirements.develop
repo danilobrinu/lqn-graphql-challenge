@@ -12,6 +12,7 @@ attrs==19.3.0             # via black, pytest
 black==19.10b0            # via -r requirements/develop.in
 click==7.1.2              # via black
 colorama==0.4.3           # via pytest
+coverage==5.3             # via -r requirements/develop.in
 django-filter==2.3.0      # via -r requirements\common.in
 django-graphql-jwt==0.3.1  # via -r requirements\common.in
 django==3.1               # via -r requirements\common.in, django-filter, django-graphql-jwt, graphene-django

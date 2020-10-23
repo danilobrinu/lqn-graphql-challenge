@@ -3,5 +3,6 @@
 black
 flake8
 pytest-django
+coverage
 faker
 snapshottest
