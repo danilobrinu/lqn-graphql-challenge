@@ -1,18 +1,15 @@
 # Built-in packages
-from typing import Union
 
 # Third-party packages
 from graphql_relay import from_global_id
 
 # Local packages
-from . import models
-from . import types
+from api.domain.episode import models, types
 
 
 def create_episode(data: types.EpisodeCreateInput) -> models.Episode:
-    episode = models.Episode(**data)
-    episode.save()
-    return episode
+    created_episode = models.Episode(**data).create()
+    return created_episode
 
 
 def get_episode(where: types.EpisodeWhereUniqueInput) -> models.Episode:
@@ -24,12 +21,10 @@ def get_episode(where: types.EpisodeWhereUniqueInput) -> models.Episode:
 def update_episode(
     where: types.EpisodeWhereUniqueInput, data: types.EpisodeUpdateInput
 ) -> models.Episode:
-    episode = get_episode(where)
-    episode.update(**data)
-    return episode
+    updated_episode = get_episode(where).update(**data)
+    return updated_episode
 
 
 def delete_episode(where: types.EpisodeWhereUniqueInput) -> models.Episode:
-    episode = get_episode(where)
-    episode.delete()
-    return episode
+    deleted_episode = get_episode(where).destroy()
+    return deleted_episode

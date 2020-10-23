@@ -1,16 +1,14 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, Date, List, NonNull
-from graphene import ObjectType, InputObjectType
+from graphene import Node, ID, String, Date, List, NonNull, ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
 # Local packages
-from api.utils import create_open_crud_filter_connection
-from . import models
-from . import filters
-from ..person.types import PersonOneInput
-from ..planet.types import PlanetManyInput
+from api.utils.graphene import create_open_crud_filter_connection_field
+from api.domain.episode import models, filters
+from api.domain.person.types import PersonOneInput
+from api.domain.planet.types import PlanetManyInput
 
 
 class Episode(DjangoObjectType):
@@ -62,6 +60,6 @@ class EpisodeManyInput(InputObjectType):
     connect = List(NonNull(EpisodeWhereUniqueInput, required=True))
 
 
-EpisodeFilterConnection = create_open_crud_filter_connection(
+EpisodeFilterConnectionField = create_open_crud_filter_connection_field(
     "EpisodeFilterConnection", filters.EpisodeFilter
 )

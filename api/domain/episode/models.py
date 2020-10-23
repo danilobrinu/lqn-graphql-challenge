@@ -4,11 +4,12 @@
 from django.db import models
 
 # Local packages
-from ..person.models import Person
-from ..planet.models import Planet
+from api.utils.models import BaseModel
+from api.domain.person.models import Person
+from api.domain.planet.models import Planet
 
 
-class Episode(models.Model):
+class Episode(BaseModel):
     title = models.CharField(max_length=100)
     opening_text = models.TextField()
     release_date = models.DateField()
@@ -18,8 +19,8 @@ class Episode(models.Model):
     producers = models.ManyToManyField(Person, related_name="episodes_by_producers")
     planets = models.ManyToManyField(Planet, related_name="episodes_by_planets")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.title}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<Episode:{self.id}>"

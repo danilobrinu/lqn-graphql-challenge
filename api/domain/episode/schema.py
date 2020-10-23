@@ -2,16 +2,12 @@
 
 # Third-party packages
 from django.db.transaction import atomic
-from graphene import ObjectType, Mutation
+from graphene import ObjectType, Mutation, ResolveInfo
 from graphene.relay import Node
 
 # Local packages
-from api.utils import create_open_crud_filter_connection
-from . import models
-from . import types
-from . import filters
-
-from .data import get_episode, create_episode, update_episode, delete_episode
+from api.domain.episode import models, types
+from api.domain.episode.data import create_episode, update_episode, delete_episode
 
 
 class CreateEpisode(types.EpisodeOutputMutation, Mutation):
@@ -19,7 +15,8 @@ class CreateEpisode(types.EpisodeOutputMutation, Mutation):
         data = types.EpisodeCreateInput(required=True)
 
     @atomic
-    def mutate(self, info, data: types.EpisodeCreateInput):
+    @staticmethod
+    def mutate(_, info: ResolveInfo, data: types.EpisodeCreateInput) -> models.Episode:
         return create_episode(data)
 
 
@@ -29,12 +26,13 @@ class UpdateEpisode(types.EpisodeOutputMutation, Mutation):
         where = types.EpisodeWhereUniqueInput(required=True)
 
     @atomic
+    @staticmethod
     def mutate(
-        self,
-        info,
+        _,
+        info: ResolveInfo,
         where: types.EpisodeWhereUniqueInput,
         data: types.EpisodeUpdateInput,
-    ):
+    ) -> models.Episode:
         return update_episode(where, data)
 
 
@@ -43,13 +41,16 @@ class DeleteEpisode(types.EpisodeOutputMutation, Mutation):
         where = types.EpisodeWhereUniqueInput(required=True)
 
     @atomic
-    def mutate(self, info, where: types.EpisodeWhereUniqueInput):
+    @staticmethod
+    def mutate(
+        _, info: ResolveInfo, where: types.EpisodeWhereUniqueInput
+    ) -> models.Episode:
         return delete_episode(where)
 
 
 class EpisodeQuery(ObjectType):
     episode = Node.Field(types.Episode)
-    episodes = types.EpisodeFilterConnection(
+    episodes = types.EpisodeFilterConnectionField(
         types.Episode, where=types.EpisodeWhereInput()
     )
 
