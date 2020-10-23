@@ -4,7 +4,7 @@
 from django.db import models
 
 # Local packages
-from ...utils import BaseModel
+from api.utils.models import BaseModel
 
 
 class Starship(BaseModel):
@@ -15,4 +15,4 @@ class Starship(BaseModel):
         return f"{self.name}"
 
     def __repr__(self) -> str:
-        return f"<Starship:{self.id}>"
+        return f"<{self.__class__.__name__}:{self.id}>"

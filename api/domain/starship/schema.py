@@ -6,9 +6,8 @@ from graphene import ObjectType, Mutation, ResolveInfo
 from graphene.relay import Node
 
 # Local packages
-from . import models
-from . import types
-from .data import create_starship, update_starship, delete_starship
+from api.domain.starship import models, types
+from api.domain.starship.data import create_starship, update_starship, delete_starship
 
 
 class CreateStarship(types.StarshipOutputMutation, Mutation):
@@ -16,8 +15,9 @@ class CreateStarship(types.StarshipOutputMutation, Mutation):
         data = types.StarshipCreateInput(required=True)
 
     @atomic
+    @staticmethod
     def mutate(
-        self, info: ResolveInfo, data: types.StarshipCreateInput
+        _, info: ResolveInfo, data: types.StarshipCreateInput
     ) -> models.Starship:
         return create_starship(data)
 
@@ -28,8 +28,9 @@ class UpdateStarship(types.StarshipOutputMutation, Mutation):
         data = types.StarshipUpdateInput(required=True)
 
     @atomic
+    @staticmethod
     def mutate(
-        self,
+        _,
         info: ResolveInfo,
         where: types.StarshipWhereUniqueInput,
         data: types.StarshipUpdateInput,
@@ -42,8 +43,9 @@ class DeleteStarship(types.StarshipOutputMutation, Mutation):
         where = types.StarshipWhereUniqueInput(required=True)
 
     @atomic
+    @staticmethod
     def mutate(
-        self, info: ResolveInfo, where: types.StarshipWhereUniqueInput
+        _, info: ResolveInfo, where: types.StarshipWhereUniqueInput
     ) -> models.Starship:
         return delete_starship(where)
 

@@ -1,14 +1,12 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, Float
-from graphene import ObjectType, InputObjectType
+from graphene import Node, ID, String, Float, ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
 # Local packages
-from api.utils import create_open_crud_filter_connection
-from . import models
-from . import filters
+from api.utils.graphene import create_open_crud_filter_connection
+from api.domain.starship import models, filters
 
 
 class Starship(DjangoObjectType):
