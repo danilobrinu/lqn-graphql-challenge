@@ -4,7 +4,8 @@ import os
 # Third-party packages
 
 # Local packages
-from .common import *  # noqa skipcq: PYL-W0614
+# skipcq: PYL-W0614
+from .common import *  # noqa
 from .common import BASE_DIR
 
 DEBUG = True
