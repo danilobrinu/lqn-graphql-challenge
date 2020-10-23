@@ -5,7 +5,7 @@ from graphene import Node, ID, String, Float, ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
 # Local packages
-from api.utils.graphene import create_open_crud_filter_connection
+from api.utils.graphene import create_open_crud_filter_connection_field
 from api.domain.starship import models, filters
 
 
@@ -48,6 +48,6 @@ class StarshipUpdateInput(InputObjectType):
     length = Float()
 
 
-StarshipFilterConnection = create_open_crud_filter_connection(
+StarshipFilterConnectionField = create_open_crud_filter_connection_field(
     "StarshipFilterConnection", filters.StarshipFilter
 )

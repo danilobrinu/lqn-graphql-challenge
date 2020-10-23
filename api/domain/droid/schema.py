@@ -1,5 +1,4 @@
 # Built-in package
-from typing import Annotated
 
 # Third-party packages
 from django.db.transaction import atomic
@@ -17,11 +16,7 @@ class CreateDroid(types.DroidOutputMutation, Mutation):
 
     @atomic
     @staticmethod
-    def mutate(
-        _,
-        info: ResolveInfo,
-        data: Annotated[types.DroidCreateInput, "data used to create a new Droid"],
-    ) -> Annotated[models.Droid, "returns a new Droid"]:
+    def mutate(_, info: ResolveInfo, data: types.DroidCreateInput,) -> models.Droid:
         return create_droid(data)
 
 
@@ -35,9 +30,9 @@ class UpdateDroid(types.DroidOutputMutation, Mutation):
     def mutate(
         _,
         info: ResolveInfo,
-        where: Annotated[types.DroidWhereUniqueInput, "data used to get a Droid"],
-        data: Annotated[types.DroidUpdateInput, "data used to update a Droid"],
-    ) -> Annotated[models.Droid, "returns an updated Droid"]:
+        where: types.DroidWhereUniqueInput,
+        data: types.DroidUpdateInput,
+    ) -> models.Droid:
         return update_droid(where, data)
 
 
@@ -48,16 +43,14 @@ class DeleteDroid(types.DroidOutputMutation, Mutation):
     @atomic
     @staticmethod
     def mutate(
-        _,
-        info: ResolveInfo,
-        where: Annotated[types.DroidWhereUniqueInput, "data used to get a Droid"],
-    ) -> Annotated[models.Droid, "returns a deleted Droid"]:
+        _, info: ResolveInfo, where: types.DroidWhereUniqueInput,
+    ) -> models.Droid:
         return delete_droid(where)
 
 
 class DroidQuery(ObjectType):
     droid = Node.Field(types.Droid)
-    droids = types.DroidFilterConnection(types.Droid, where=types.DroidWhereInput())
+    droids = types.DroidFilterConnectionField(types.Droid, where=types.DroidWhereInput())
 
 
 class DroidMutation(ObjectType):

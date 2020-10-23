@@ -52,7 +52,7 @@ class DeleteStarship(types.StarshipOutputMutation, Mutation):
 
 class StarshipQuery(ObjectType):
     starship = Node.Field(types.Starship)
-    starships = types.StarshipFilterConnection(
+    starships = types.StarshipFilterConnectionField(
         types.Starship, where=types.StarshipWhereInput()
     )
 

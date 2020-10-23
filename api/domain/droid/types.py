@@ -5,7 +5,7 @@ from graphene import Node, ID, String, ObjectType, InputObjectType
 from graphene_django import DjangoObjectType
 
 # Local packages
-from api.utils.graphene import create_open_crud_filter_connection
+from api.utils.graphene import create_open_crud_filter_connection_field
 from api.domain.character.types import Character
 from api.domain.droid import models, filters
 
@@ -57,6 +57,6 @@ class DroidUpdateInput(InputObjectType):
     primary_function = String()
 
 
-DroidFilterConnection = create_open_crud_filter_connection(
+DroidFilterConnectionField = create_open_crud_filter_connection_field(
     "DroidFilterConnection", filters.DroidFilter
 )

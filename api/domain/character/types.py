@@ -4,7 +4,7 @@
 from graphene import Interface, ID, String, List
 
 # Local packages
-from ..episode.types import Episode
+from api.domain.episode.types import Episode
 
 
 class Character(Interface):
