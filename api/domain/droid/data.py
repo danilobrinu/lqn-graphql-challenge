@@ -5,14 +5,12 @@ from typing import Union
 from graphql_relay import from_global_id
 
 # Local packages
-from . import models
-from . import types
+from api.domain.droid import models, types
 
 
 def create_droid(data: types.DroidCreateInput) -> models.Droid:
-    droid = models.Droid(**data)
-    droid.save()
-    return droid
+    created_droid = models.Droid(**data).create()
+    return created_droid
 
 
 def get_droid(where: types.DroidWhereUniqueInput) -> models.Droid:
@@ -24,12 +22,10 @@ def get_droid(where: types.DroidWhereUniqueInput) -> models.Droid:
 def update_droid(
     where: types.DroidWhereUniqueInput, data: types.DroidUpdateInput
 ) -> models.Droid:
-    droid = get_droid(where)
-    droid.update(**data)
-    return droid
+    updated_droid = get_droid(where).update(**data)
+    return updated_droid
 
 
 def delete_droid(where: types.DroidWhereUniqueInput) -> models.Droid:
-    droid = get_droid(where)
-    droid.delete()
-    return droid
+    deleted_droid = get_droid(where).destroy()
+    return deleted_droid
