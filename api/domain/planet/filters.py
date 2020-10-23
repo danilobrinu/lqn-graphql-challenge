@@ -1,11 +1,10 @@
 # Built-in packages
 
 # Third-party packages
-from django_filters import FilterSet
-from django_filters import CharFilter
+from django_filters import FilterSet, CharFilter
 
 # Local packages
-from . import models
+from api.domain.planet import models
 
 
 class PlanetFilter(FilterSet):

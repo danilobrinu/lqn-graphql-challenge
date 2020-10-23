@@ -2,16 +2,12 @@
 
 # Third-party packages
 from django.db.transaction import atomic
-from graphene import ObjectType, Mutation
+from graphene import ObjectType, Mutation, ResolveInfo
 from graphene.relay import Node
 
 # Local packages
-from api.utils import create_open_crud_filter_connection
-from . import models
-from . import types
-from . import filters
-
-from .data import get_planet, create_planet, update_planet, delete_planet
+from api.domain.planet import models, types
+from api.domain.planet.data import create_planet, update_planet, delete_planet
 
 
 class CreatePlanet(types.PlanetOutputMutation, Mutation):
@@ -19,7 +15,8 @@ class CreatePlanet(types.PlanetOutputMutation, Mutation):
         data = types.PlanetCreateInput(required=True)
 
     @atomic
-    def mutate(self, info, data: types.PlanetCreateInput):
+    @staticmethod
+    def mutate(_, info: ResolveInfo, data: types.PlanetCreateInput) -> models.Planet:
         return create_planet(data)
 
 
@@ -29,9 +26,13 @@ class UpdatePlanet(types.PlanetOutputMutation, Mutation):
         where = types.PlanetWhereUniqueInput(required=True)
 
     @atomic
+    @staticmethod
     def mutate(
-        self, info, where: types.PlanetWhereUniqueInput, data: types.PlanetUpdateInput,
-    ):
+        _,
+        info: ResolveInfo,
+        where: types.PlanetWhereUniqueInput,
+        data: types.PlanetUpdateInput,
+    ) -> models.Planet:
         return update_planet(where, data)
 
 
@@ -40,13 +41,16 @@ class DeletePlanet(types.PlanetOutputMutation, Mutation):
         where = types.PlanetWhereUniqueInput(required=True)
 
     @atomic
-    def mutate(self, info, where: types.PlanetWhereUniqueInput):
+    @staticmethod
+    def mutate(
+        _, info: ResolveInfo, where: types.PlanetWhereUniqueInput
+    ) -> models.Planet:
         return delete_planet(where)
 
 
 class PlanetQuery(ObjectType):
     planet = Node.Field(types.Planet)
-    planets = types.PlanetFilterConnection(types.Planet, where=types.PlanetWhereInput())
+    planets = types.PlanetFilterConnectionField(types.Planet, where=types.PlanetWhereInput())
 
 
 class PlanetMutation(ObjectType):

@@ -1,14 +1,12 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String
-from graphene import ObjectType, InputObjectType, List, NonNull
+from graphene import Node, ID, String, ObjectType, InputObjectType, List, NonNull
 from graphene_django import DjangoObjectType
 
 # Local packages
-from api.utils import create_open_crud_filter_connection
-from . import models
-from . import filters
+from api.utils.graphene import create_open_crud_filter_connection_field
+from api.domain.planet import models, filters
 
 
 class Planet(DjangoObjectType):
@@ -52,6 +50,6 @@ class PlanetManyInput(InputObjectType):
     connect = List(NonNull(PlanetWhereUniqueInput, required=True))
 
 
-PlanetFilterConnection = create_open_crud_filter_connection(
+PlanetFilterConnectionField = create_open_crud_filter_connection_field(
     "PlanetFilterConnection", filters.PlanetFilter
 )
