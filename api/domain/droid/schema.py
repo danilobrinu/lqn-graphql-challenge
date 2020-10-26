@@ -15,7 +15,6 @@ class CreateDroid(types.DroidOutputMutation, Mutation):
         data = types.DroidCreateInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(_, info: ResolveInfo, data: types.DroidCreateInput,) -> models.Droid:
         return create_droid(data)
 
@@ -26,7 +25,6 @@ class UpdateDroid(types.DroidOutputMutation, Mutation):
         data = types.DroidUpdateInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
         _,
         info: ResolveInfo,
@@ -41,7 +39,6 @@ class DeleteDroid(types.DroidOutputMutation, Mutation):
         where = types.DroidWhereUniqueInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
         _, info: ResolveInfo, where: types.DroidWhereUniqueInput,
     ) -> models.Droid:

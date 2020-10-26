@@ -9,7 +9,9 @@ from api.domain.character.models import Character
 
 class Human(Character):
     home_planet = models.CharField(max_length=150)
-    friends = models.ManyToManyField("Human", blank=True)
+    friends = models.ManyToManyField(
+        "Human", related_name="friends_by_human", blank=True
+    )
 
     def __str__(self) -> str:
         return f"{self.name}"

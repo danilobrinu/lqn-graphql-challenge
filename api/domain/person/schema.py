@@ -15,7 +15,6 @@ class CreatePerson(types.PersonOutputMutation, Mutation):
         data = types.PersonCreateInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(_, info: ResolveInfo, data: types.PersonCreateInput) -> models.Person:
         return create_person(data)
 
@@ -26,7 +25,6 @@ class UpdatePerson(types.PersonOutputMutation, Mutation):
         where = types.PersonWhereUniqueInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
         _,
         info: ResolveInfo,
@@ -41,7 +39,6 @@ class DeletePerson(types.PersonOutputMutation, Mutation):
         where = types.PersonWhereUniqueInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
         _, info: ResolveInfo, where: types.PersonWhereUniqueInput
     ) -> models.Person:

@@ -15,7 +15,6 @@ class CreatePlanet(types.PlanetOutputMutation, Mutation):
         data = types.PlanetCreateInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(_, info: ResolveInfo, data: types.PlanetCreateInput) -> models.Planet:
         return create_planet(data)
 
@@ -26,7 +25,6 @@ class UpdatePlanet(types.PlanetOutputMutation, Mutation):
         where = types.PlanetWhereUniqueInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
         _,
         info: ResolveInfo,
@@ -41,7 +39,6 @@ class DeletePlanet(types.PlanetOutputMutation, Mutation):
         where = types.PlanetWhereUniqueInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
         _, info: ResolveInfo, where: types.PlanetWhereUniqueInput
     ) -> models.Planet:

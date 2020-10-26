@@ -15,7 +15,6 @@ class CreateEpisode(types.EpisodeOutputMutation, Mutation):
         data = types.EpisodeCreateInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(_, info: ResolveInfo, data: types.EpisodeCreateInput) -> models.Episode:
         return create_episode(data)
 
@@ -26,7 +25,6 @@ class UpdateEpisode(types.EpisodeOutputMutation, Mutation):
         where = types.EpisodeWhereUniqueInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
         _,
         info: ResolveInfo,
@@ -41,7 +39,6 @@ class DeleteEpisode(types.EpisodeOutputMutation, Mutation):
         where = types.EpisodeWhereUniqueInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
         _, info: ResolveInfo, where: types.EpisodeWhereUniqueInput
     ) -> models.Episode:
