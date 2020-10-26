@@ -15,7 +15,7 @@ class CreateEpisode(types.EpisodeOutputMutation, Mutation):
         data = types.EpisodeCreateInput(required=True)
 
     @atomic
-    # skipcq: PYL-E0213
+    # skipcq: PYL-E0213, PYL-R0201
     def mutate(
         _root: models.Episode, _info: ResolveInfo, data: types.EpisodeCreateInput
     ) -> models.Episode:
@@ -28,7 +28,7 @@ class UpdateEpisode(types.EpisodeOutputMutation, Mutation):
         where = types.EpisodeWhereUniqueInput(required=True)
 
     @atomic
-    # skipcq: PYL-E0213
+    # skipcq: PYL-E0213, PYL-R0201
     def mutate(
         _root: models.Episode,
         info: ResolveInfo,
@@ -43,7 +43,7 @@ class DeleteEpisode(types.EpisodeOutputMutation, Mutation):
         where = types.EpisodeWhereUniqueInput(required=True)
 
     @atomic
-    # skipcq: PYL-E0213
+    # skipcq: PYL-E0213, PYL-R0201
     def mutate(
         _root: models.Episode, info: ResolveInfo, where: types.EpisodeWhereUniqueInput
     ) -> models.Episode:

@@ -15,7 +15,7 @@ class CreatePlanet(types.PlanetOutputMutation, Mutation):
         data = types.PlanetCreateInput(required=True)
 
     @atomic
-    # skipcq: PYL-E0213
+    # skipcq: PYL-E0213, PYL-R0201
     def mutate(
         _root: models.Planet, _info: ResolveInfo, data: types.PlanetCreateInput
     ) -> models.Planet:
@@ -28,7 +28,7 @@ class UpdatePlanet(types.PlanetOutputMutation, Mutation):
         where = types.PlanetWhereUniqueInput(required=True)
 
     @atomic
-    # skipcq: PYL-E0213
+    # skipcq: PYL-E0213, PYL-R0201
     def mutate(
         _root: models.Planet,
         _info: ResolveInfo,
@@ -43,7 +43,7 @@ class DeletePlanet(types.PlanetOutputMutation, Mutation):
         where = types.PlanetWhereUniqueInput(required=True)
 
     @atomic
-    # skipcq: PYL-E0213
+    # skipcq: PYL-E0213, PYL-R0201
     def mutate(
         _root: models.Planet, _info: ResolveInfo, where: types.PlanetWhereUniqueInput
     ) -> models.Planet:
