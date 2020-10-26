@@ -15,7 +15,8 @@ colorama==0.4.3           # via pytest
 coverage==5.3             # via -r requirements/develop.in
 django-filter==2.3.0      # via -r requirements\common.in
 django-graphql-jwt==0.3.1  # via -r requirements\common.in
-django==3.1               # via -r requirements\common.in, django-filter, django-graphql-jwt, graphene-django
+django==3.1               # via -r requirements\common.in, django-filter, django-graphql-jwt, djangorestframework, graphene-django
+djangorestframework==3.12.1  # via -r requirements\common.in
 faker==4.1.1              # via -r requirements/develop.in
 fastdiff==0.2.0           # via snapshottest
 flake8==3.8.3             # via -r requirements/develop.in

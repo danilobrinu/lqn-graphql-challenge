@@ -1,5 +1,6 @@
 Django==3.1
 graphene-django
+djangorestframework
 django-filter
 django-graphql-jwt
 python-dotenv
