@@ -15,6 +15,7 @@ class CreateDroid(types.DroidOutputMutation, Mutation):
         data = types.DroidCreateInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Droid, _info: ResolveInfo, data: types.DroidCreateInput,
     ) -> models.Droid:
@@ -27,6 +28,7 @@ class UpdateDroid(types.DroidOutputMutation, Mutation):
         data = types.DroidUpdateInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Droid,
         _info: ResolveInfo,
@@ -41,6 +43,7 @@ class DeleteDroid(types.DroidOutputMutation, Mutation):
         where = types.DroidWhereUniqueInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Droid, _info: ResolveInfo, where: types.DroidWhereUniqueInput,
     ) -> models.Droid:

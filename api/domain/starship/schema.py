@@ -15,6 +15,7 @@ class CreateStarship(types.StarshipOutputMutation, Mutation):
         data = types.StarshipCreateInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Starship, _info: ResolveInfo, data: types.StarshipCreateInput
     ) -> models.Starship:
@@ -27,6 +28,7 @@ class UpdateStarship(types.StarshipOutputMutation, Mutation):
         data = types.StarshipUpdateInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Starship,
         _info: ResolveInfo,
@@ -41,6 +43,7 @@ class DeleteStarship(types.StarshipOutputMutation, Mutation):
         where = types.StarshipWhereUniqueInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Starship,
         _info: ResolveInfo,

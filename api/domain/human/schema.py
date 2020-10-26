@@ -15,6 +15,7 @@ class CreateHuman(types.HumanOutputMutation, Mutation):
         data = types.HumanCreateInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Human, info: ResolveInfo, data: types.HumanCreateInput
     ) -> models.Human:
@@ -27,6 +28,7 @@ class UpdateHuman(types.HumanOutputMutation, Mutation):
         where = types.HumanWhereUniqueInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Human,
         _info: ResolveInfo,
@@ -41,6 +43,7 @@ class DeleteHuman(types.HumanOutputMutation, Mutation):
         where = types.HumanWhereUniqueInput(required=True)
 
     @atomic
+    # skipcq: PYL-E0213
     def mutate(
         _root: models.Human, _info: ResolveInfo, where: types.HumanWhereUniqueInput
     ) -> models.Human:
