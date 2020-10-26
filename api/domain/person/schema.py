@@ -15,7 +15,9 @@ class CreatePerson(types.PersonOutputMutation, Mutation):
         data = types.PersonCreateInput(required=True)
 
     @atomic
-    def mutate(_, info: ResolveInfo, data: types.PersonCreateInput) -> models.Person:
+    def mutate(
+        _root: models.Person, _info: ResolveInfo, data: types.PersonCreateInput
+    ) -> models.Person:
         return create_person(data)
 
 
@@ -26,8 +28,8 @@ class UpdatePerson(types.PersonOutputMutation, Mutation):
 
     @atomic
     def mutate(
-        _,
-        info: ResolveInfo,
+        _root: models.Person,
+        _info: ResolveInfo,
         where: types.PersonWhereUniqueInput,
         data: types.PersonUpdateInput,
     ) -> models.Person:
@@ -40,7 +42,7 @@ class DeletePerson(types.PersonOutputMutation, Mutation):
 
     @atomic
     def mutate(
-        _, info: ResolveInfo, where: types.PersonWhereUniqueInput
+        _root: models.Person, _info: ResolveInfo, where: types.PersonWhereUniqueInput
     ) -> models.Person:
         return delete_person(where)
 

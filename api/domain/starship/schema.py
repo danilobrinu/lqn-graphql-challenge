@@ -15,9 +15,8 @@ class CreateStarship(types.StarshipOutputMutation, Mutation):
         data = types.StarshipCreateInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
-        _, info: ResolveInfo, data: types.StarshipCreateInput
+        _root: models.Starship, _info: ResolveInfo, data: types.StarshipCreateInput
     ) -> models.Starship:
         return create_starship(data)
 
@@ -28,10 +27,9 @@ class UpdateStarship(types.StarshipOutputMutation, Mutation):
         data = types.StarshipUpdateInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
-        _,
-        info: ResolveInfo,
+        _root: models.Starship,
+        _info: ResolveInfo,
         where: types.StarshipWhereUniqueInput,
         data: types.StarshipUpdateInput,
     ) -> models.Starship:
@@ -43,9 +41,10 @@ class DeleteStarship(types.StarshipOutputMutation, Mutation):
         where = types.StarshipWhereUniqueInput(required=True)
 
     @atomic
-    @staticmethod
     def mutate(
-        _, info: ResolveInfo, where: types.StarshipWhereUniqueInput
+        _root: models.Starship,
+        _info: ResolveInfo,
+        where: types.StarshipWhereUniqueInput,
     ) -> models.Starship:
         return delete_starship(where)
 

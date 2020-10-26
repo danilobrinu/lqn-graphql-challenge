@@ -6,7 +6,7 @@ from graphene import ObjectType, Mutation, ResolveInfo
 from graphene.relay import Node
 
 # Local packages
-from api.domain.human import types
+from api.domain.human import models, types
 from api.domain.human.data import create_human, update_human, delete_human
 
 
@@ -15,7 +15,9 @@ class CreateHuman(types.HumanOutputMutation, Mutation):
         data = types.HumanCreateInput(required=True)
 
     @atomic
-    def mutate(_, info: ResolveInfo, data: types.HumanCreateInput):
+    def mutate(
+        _root: models.Human, info: ResolveInfo, data: types.HumanCreateInput
+    ) -> models.Human:
         return create_human(data)
 
 
@@ -26,8 +28,8 @@ class UpdateHuman(types.HumanOutputMutation, Mutation):
 
     @atomic
     def mutate(
-        _,
-        info: ResolveInfo,
+        _root: models.Human,
+        _info: ResolveInfo,
         where: types.HumanWhereUniqueInput,
         data: types.HumanUpdateInput,
     ):
@@ -39,7 +41,9 @@ class DeleteHuman(types.HumanOutputMutation, Mutation):
         where = types.HumanWhereUniqueInput(required=True)
 
     @atomic
-    def mutate(_, info: ResolveInfo, where: types.HumanWhereUniqueInput):
+    def mutate(
+        _root: models.Human, _info: ResolveInfo, where: types.HumanWhereUniqueInput
+    ) -> models.Human:
         return delete_human(where)
 
 

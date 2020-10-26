@@ -10,7 +10,10 @@ from api.domain.episode.models import Episode
 
 class Character(BaseModel):
     name = models.CharField(max_length=100)
-    appears_in = models.ManyToManyField(Episode, related_name="episodes_by_character")
+    appears_in = models.ManyToManyField(Episode, blank=True)
+
+    class Meta:
+        abstract = True
 
     def __str__(self) -> str:
         return f"{self.name}"

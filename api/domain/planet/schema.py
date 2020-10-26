@@ -15,7 +15,9 @@ class CreatePlanet(types.PlanetOutputMutation, Mutation):
         data = types.PlanetCreateInput(required=True)
 
     @atomic
-    def mutate(_, info: ResolveInfo, data: types.PlanetCreateInput) -> models.Planet:
+    def mutate(
+        _root: models.Planet, _info: ResolveInfo, data: types.PlanetCreateInput
+    ) -> models.Planet:
         return create_planet(data)
 
 
@@ -26,8 +28,8 @@ class UpdatePlanet(types.PlanetOutputMutation, Mutation):
 
     @atomic
     def mutate(
-        _,
-        info: ResolveInfo,
+        _root: models.Planet,
+        _info: ResolveInfo,
         where: types.PlanetWhereUniqueInput,
         data: types.PlanetUpdateInput,
     ) -> models.Planet:
@@ -40,7 +42,7 @@ class DeletePlanet(types.PlanetOutputMutation, Mutation):
 
     @atomic
     def mutate(
-        _, info: ResolveInfo, where: types.PlanetWhereUniqueInput
+        _root: models.Planet, _info: ResolveInfo, where: types.PlanetWhereUniqueInput
     ) -> models.Planet:
         return delete_planet(where)
 
