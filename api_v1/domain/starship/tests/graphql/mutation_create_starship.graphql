@@ -1,0 +1,7 @@
+mutation createStarship($data: StarshipCreateInput!) {
+    createStarship(data: $data) {
+        id
+        name
+        length
+    }
+}

@@ -3,6 +3,6 @@ services:
   django:
     build: .
     command: python run.py
-    restart: allways
+    restart: always
     expose:
       - 8080

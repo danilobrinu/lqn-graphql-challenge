@@ -1,7 +1,0 @@
-mutation deleteStarship($id: ID!) {
-    deleteStarship(id: $id) {
-        id
-        name
-        length
-    }
-}

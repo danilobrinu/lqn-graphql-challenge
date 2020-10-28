@@ -1,0 +1,10 @@
+mutation updateStarship(
+    $where: StarshipWhereUniqueInput!
+    $data: StarshipUpdateInput!
+) {
+    updateStarship(where: $where, data: $data) {
+        id
+        name
+        length
+    }
+}

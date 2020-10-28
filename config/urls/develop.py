@@ -6,9 +6,9 @@ from graphene_django.views import GraphQLView
 
 # Local packages
 # skipcq: PYL-W0614
-from .common import *  # noqa
+from config.urls.common import *  # noqa
+from api_v1.schema import schema as api_v1_schema
 
 urlpatterns += [
-    path("graphql/", csrf_exempt(GraphQLView.as_view())),
-    path("graphiql/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path("graphql/v1", csrf_exempt(GraphQLView.as_view(schema=api_v1_schema))),
 ]

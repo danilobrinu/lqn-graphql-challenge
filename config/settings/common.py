@@ -42,9 +42,9 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["graphene_django"]
+THIRD_PARTY_APPS = ["rest_framework", "graphene_django"]
 
-LOCAL_APPS = ["api"]
+LOCAL_APPS = ["api_v1"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -123,6 +123,5 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 GRAPHENE = {
-    "SCHEMA": "config.schema.schema",
     "MIDDLEWARE": ["graphene_django.debug.DjangoDebugMiddleware",],
 }

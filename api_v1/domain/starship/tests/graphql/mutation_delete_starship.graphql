@@ -1,0 +1,7 @@
+mutation deleteStarship($where: StarshipWhereUniqueInput!) {
+    deleteStarship(where: $where) {
+        id
+        name
+        length
+    }
+}
