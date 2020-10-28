@@ -88,456 +88,447 @@ snapshots['test_mutation_update_starship[data4] 1'] = {
 }
 
 snapshots['test_query_starship 1'] = {
-    'data': {
-        'starships': {
-            'edges': [
+    'errors': [
+        {
+            'locations': [
                 {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
+                    'column': 9,
+                    'line': 3
                 }
-            ]
+            ],
+            'message': 'Cannot query field "edges" on type "Starship".'
         }
-    }
+    ]
 }
 
 snapshots['test_query_starships 1'] = {
-    'data': {
-        'starships': {
-            'edges': [
+    'errors': [
+        {
+            'locations': [
                 {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
+                    'column': 9,
+                    'line': 3
                 }
-            ]
+            ],
+            'message': 'Cannot query field "edges" on type "Starship".'
         }
-    }
+    ]
 }
 
 snapshots['test_query_starships_with_filters[where0] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where10] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where11] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where12] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where13] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where14] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where15] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where16] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where17] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where18] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where1] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where2] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where3] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where4] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where5] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where6] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where7] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where8] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mg==',
-                        'length': 10.0,
-                        'name': 'Starship Two'
-                    }
-                },
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6Mw==',
-                        'length': 11.0,
-                        'name': 'Starship Three'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }
 
 snapshots['test_query_starships_with_filters[where9] 1'] = {
     'data': {
-        'starships': {
-            'edges': [
-                {
-                    'node': {
-                        'id': 'U3RhcnNoaXA6MQ==',
-                        'length': 9.0,
-                        'name': 'Starship One'
-                    }
-                }
-            ]
-        }
+        'starships': [
+            {
+                'id': 'U3RhcnNoaXA6MQ==',
+                'length': 9.0,
+                'name': 'Starship One'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mg==',
+                'length': 10.0,
+                'name': 'Starship Two'
+            },
+            {
+                'id': 'U3RhcnNoaXA6Mw==',
+                'length': 11.0,
+                'name': 'Starship Three'
+            }
+        ]
     }
 }

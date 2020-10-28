@@ -1,11 +1,7 @@
 query getStarships($where: StarshipWhereInput!) {
     starships(where: $where) {
-        edges {
-            node {
-                id
-                name
-                length
-            }
-        }
+        id
+        name
+        length
     }
 }
