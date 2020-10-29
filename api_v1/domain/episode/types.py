@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, Date, List, NonNull, ObjectType, InputObjectType
+import graphene as gql
 from graphene_django import DjangoObjectType
 
 # Local packages
@@ -17,47 +17,47 @@ class Episode(DjangoObjectType):
     class Meta:
         model = models.Episode
         filter_fields = []
-        interfaces = (Node,)
+        interfaces = (gql.Node,)
 
 
-class EpisodeOutputMutation(ObjectType):
+class EpisodeOutputMutation(gql.ObjectType):
     Output = Episode
 
 
-class EpisodeWhereUniqueInput(InputObjectType):
-    id = ID()
+class EpisodeWhereUniqueInput(gql.InputObjectType):
+    id = gql.ID()
 
 
-class EpisodeWhereInput(InputObjectType):
-    title = String()
-    title_not = String()
-    title_contains = String()
-    title_not_contains = String()
-    title_starts_with = String()
-    title_not_starts_with = String()
-    title_ends_with = String()
-    title_in = String()
-    title_not_in = String()
+class EpisodeWhereInput(gql.InputObjectType):
+    title = gql.String()
+    title_not = gql.String()
+    title_contains = gql.String()
+    title_not_contains = gql.String()
+    title_starts_with = gql.String()
+    title_not_starts_with = gql.String()
+    title_ends_with = gql.String()
+    title_in = gql.String()
+    title_not_in = gql.String()
 
 
-class EpisodeCreateInput(InputObjectType):
-    title = String(required=True)
-    opening_text = String(required=True)
-    release_date = Date(required=True)
+class EpisodeCreateInput(gql.InputObjectType):
+    title = gql.String(required=True)
+    opening_text = gql.String(required=True)
+    release_date = gql.Date(required=True)
     director = PersonOneInput(required=True)
     producers = PlanetManyInput(required=True)
 
 
-class EpisodeUpdateInput(InputObjectType):
-    title = String()
-    opening_text = String()
-    release_date = Date()
+class EpisodeUpdateInput(gql.InputObjectType):
+    title = gql.String()
+    opening_text = gql.String()
+    release_date = gql.Date()
     director = PersonOneInput()
     producers = PlanetManyInput()
 
 
-class EpisodeManyInput(InputObjectType):
-    connect = List(NonNull(EpisodeWhereUniqueInput, required=True))
+class EpisodeManyInput(gql.InputObjectType):
+    connect = gql.List(gql.NonNull(EpisodeWhereUniqueInput, required=True))
 
 
 EpisodeFilterConnectionField = create_open_crud_filter_connection_field(

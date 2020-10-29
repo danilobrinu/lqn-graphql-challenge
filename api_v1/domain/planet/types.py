@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, ObjectType, InputObjectType, List, NonNull
+import graphene as gql
 from graphene_django import DjangoObjectType
 
 # Local packages
@@ -15,39 +15,39 @@ class Planet(DjangoObjectType):
     class Meta:
         model = models.Planet
         filter_fields = []
-        interfaces = (Node,)
+        interfaces = (gql.Node,)
 
 
-class PlanetOutputMutation(ObjectType):
+class PlanetOutputMutation(gql.ObjectType):
     Output = Planet
 
 
-class PlanetWhereUniqueInput(InputObjectType):
-    id = ID()
+class PlanetWhereUniqueInput(gql.InputObjectType):
+    id = gql.ID()
 
 
-class PlanetWhereInput(InputObjectType):
-    name = String()
-    name_not = String()
-    name_contains = String()
-    name_not_contains = String()
-    name_starts_with = String()
-    name_not_starts_with = String()
-    name_ends_with = String()
-    name_in = String()
-    name_not_in = String()
+class PlanetWhereInput(gql.InputObjectType):
+    name = gql.String()
+    name_not = gql.String()
+    name_contains = gql.String()
+    name_not_contains = gql.String()
+    name_starts_with = gql.String()
+    name_not_starts_with = gql.String()
+    name_ends_with = gql.String()
+    name_in = gql.String()
+    name_not_in = gql.String()
 
 
-class PlanetCreateInput(InputObjectType):
-    name = String(required=True)
+class PlanetCreateInput(gql.InputObjectType):
+    name = gql.String(required=True)
 
 
-class PlanetUpdateInput(InputObjectType):
-    name = String()
+class PlanetUpdateInput(gql.InputObjectType):
+    name = gql.String()
 
 
-class PlanetManyInput(InputObjectType):
-    connect = List(NonNull(PlanetWhereUniqueInput, required=True))
+class PlanetManyInput(gql.InputObjectType):
+    connect = gql.List(gql.NonNull(PlanetWhereUniqueInput, required=True))
 
 
 PlanetFilterConnectionField = create_open_crud_filter_connection_field(

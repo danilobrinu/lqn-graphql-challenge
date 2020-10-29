@@ -1,25 +1,12 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import (
-    Node,
-    Field,
-    ID,
-    String,
-    Float,
-    Decimal,
-    List,
-    ObjectType,
-    InputObjectType,
-)
+import graphene as gql
 from graphene.relay.node import NodeField
 from graphene_django import DjangoObjectType
 
 # Local packages
-from api_v1.utils.graphene import (
-    create_open_crud_filter_connection_field,
-    create_open_crud_filter_field,
-)
+from api_v1.utils.graphene import create_open_crud_filter_connection_field
 from api_v1.domain.starship import models, filters
 
 
@@ -29,46 +16,46 @@ class Starship(DjangoObjectType):
     class Meta:
         model = models.Starship
         filter_fields = ("name", "length")
-        interfaces = (Node,)
+        interfaces = (gql.Node,)
 
 
-class StarshipOutputMutation(ObjectType):
+class StarshipOutputMutation(gql.ObjectType):
     Output = Starship
 
 
-class StarshipWhereUniqueInput(InputObjectType):
-    id = ID()
+class StarshipWhereUniqueInput(gql.InputObjectType):
+    id = gql.ID()
 
 
-class StarshipWhereInput(InputObjectType):
-    name = String()
-    name_not = String()
-    name_contains = String()
-    name_not_contains = String()
-    name_starts_with = String()
-    name_not_starts_with = String()
-    name_ends_with = String()
-    name_not_ends_with = String()
-    name_in = List(String)
-    name_not_in = List(String)
-    length = Decimal()
-    length_not = Decimal()
-    length_lt = Decimal()
-    length_lte = Decimal()
-    length_gt = Decimal()
-    length_gte = Decimal()
-    length_in = List(Decimal)
-    length_not_in = List(Decimal)
+class StarshipWhereInput(gql.InputObjectType):
+    name = gql.String()
+    name_not = gql.String()
+    name_contains = gql.String()
+    name_not_contains = gql.String()
+    name_starts_with = gql.String()
+    name_not_starts_with = gql.String()
+    name_ends_with = gql.String()
+    name_not_ends_with = gql.String()
+    name_in = gql.List(gql.String)
+    name_not_in = gql.List(gql.String)
+    length = gql.Decimal()
+    length_not = gql.Decimal()
+    length_lt = gql.Decimal()
+    length_lte = gql.Decimal()
+    length_gt = gql.Decimal()
+    length_gte = gql.Decimal()
+    length_in = gql.List(gql.Decimal)
+    length_not_in = gql.List(gql.Decimal)
 
 
-class StarshipCreateInput(InputObjectType):
-    name = String(required=True)
-    length = Float(required=True)
+class StarshipCreateInput(gql.InputObjectType):
+    name = gql.String(required=True)
+    length = gql.Float(required=True)
 
 
-class StarshipUpdateInput(InputObjectType):
-    name = String()
-    length = Float()
+class StarshipUpdateInput(gql.InputObjectType):
+    name = gql.String()
+    length = gql.Float()
 
 
 StarshipFilterConnectionField = create_open_crud_filter_connection_field(

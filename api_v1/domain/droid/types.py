@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, ObjectType, InputObjectType  # skipcq: PYL-W0611
+import graphene as gql
 from graphene_django import DjangoObjectType
 
 # Local packages
@@ -10,7 +10,7 @@ from api_v1.domain.character.types import Character  # skipcq: PYL-W0611
 from api_v1.domain.droid import models, filters
 
 
-class Droid(DjangoObjectType, interfaces=(Character, Node,)):
+class Droid(DjangoObjectType, interfaces=(Character, gql.Node,)):
     """An object with an ID."""
 
     class Meta:
@@ -18,43 +18,43 @@ class Droid(DjangoObjectType, interfaces=(Character, Node,)):
         filter_fields = []
 
 
-class DroidOutputMutation(ObjectType):
+class DroidOutputMutation(gql.ObjectType):
     Output = Droid
 
 
-class DroidWhereUniqueInput(InputObjectType):
-    id = ID()
+class DroidWhereUniqueInput(gql.InputObjectType):
+    id = gql.ID()
 
 
-class DroidWhereInput(InputObjectType):
-    name = String()
-    name_not = String()
-    name_contains = String()
-    name_not_contains = String()
-    name_starts_with = String()
-    name_not_starts_with = String()
-    name_ends_with = String()
-    name_in = String()
-    name_not_in = String()
-    primary_function = String()
-    primary_function_not = String()
-    primary_function_contains = String()
-    primary_function_not_contains = String()
-    primary_function_starts_with = String()
-    primary_function_not_starts_with = String()
-    primary_function_ends_with = String()
-    primary_function_in = String()
-    primary_function_not_in = String()
+class DroidWhereInput(gql.InputObjectType):
+    name = gql.String()
+    name_not = gql.String()
+    name_contains = gql.String()
+    name_not_contains = gql.String()
+    name_starts_with = gql.String()
+    name_not_starts_with = gql.String()
+    name_ends_with = gql.String()
+    name_in = gql.String()
+    name_not_in = gql.String()
+    primary_function = gql.String()
+    primary_function_not = gql.String()
+    primary_function_contains = gql.String()
+    primary_function_not_contains = gql.String()
+    primary_function_starts_with = gql.String()
+    primary_function_not_starts_with = gql.String()
+    primary_function_ends_with = gql.String()
+    primary_function_in = gql.String()
+    primary_function_not_in = gql.String()
 
 
-class DroidCreateInput(InputObjectType):
-    name = String(required=True)
-    primary_function = String(required=True)
+class DroidCreateInput(gql.InputObjectType):
+    name = gql.String(required=True)
+    primary_function = gql.String(required=True)
 
 
-class DroidUpdateInput(InputObjectType):
-    name = String()
-    primary_function = String()
+class DroidUpdateInput(gql.InputObjectType):
+    name = gql.String()
+    primary_function = gql.String()
 
 
 DroidFilterConnectionField = create_open_crud_filter_connection_field(

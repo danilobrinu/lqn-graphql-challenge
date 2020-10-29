@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Node, ID, String, ObjectType, InputObjectType
+import graphene as gql
 from graphene_django import DjangoObjectType
 
 # Local packages
@@ -15,49 +15,49 @@ class Person(DjangoObjectType):
     class Meta:
         model = models.Person
         filter_fields = []
-        interfaces = (Node,)
+        interfaces = (gql.Node,)
 
 
-class PersonOutputMutation(ObjectType):
+class PersonOutputMutation(gql.ObjectType):
     Output = Person
 
 
-class PersonWhereUniqueInput(InputObjectType):
-    id = ID()
+class PersonWhereUniqueInput(gql.InputObjectType):
+    id = gql.ID()
 
 
-class PersonWhereInput(InputObjectType):
-    first_name = String()
-    first_name_not = String()
-    first_name_contains = String()
-    first_name_not_contains = String()
-    first_name_starts_with = String()
-    first_name_not_starts_with = String()
-    first_name_ends_with = String()
-    first_name_in = String()
-    first_name_not_in = String()
-    last_name = String()
-    last_name_not = String()
-    last_name_contains = String()
-    last_name_not_contains = String()
-    last_name_starts_with = String()
-    last_name_not_starts_with = String()
-    last_name_ends_with = String()
-    last_name_in = String()
-    last_name_not_in = String()
+class PersonWhereInput(gql.InputObjectType):
+    first_name = gql.String()
+    first_name_not = gql.String()
+    first_name_contains = gql.String()
+    first_name_not_contains = gql.String()
+    first_name_starts_with = gql.String()
+    first_name_not_starts_with = gql.String()
+    first_name_ends_with = gql.String()
+    first_name_in = gql.String()
+    first_name_not_in = gql.String()
+    last_name = gql.String()
+    last_name_not = gql.String()
+    last_name_contains = gql.String()
+    last_name_not_contains = gql.String()
+    last_name_starts_with = gql.String()
+    last_name_not_starts_with = gql.String()
+    last_name_ends_with = gql.String()
+    last_name_in = gql.String()
+    last_name_not_in = gql.String()
 
 
-class PersonCreateInput(InputObjectType):
-    first_name = String(required=True)
-    last_name = String(required=True)
+class PersonCreateInput(gql.InputObjectType):
+    first_name = gql.String(required=True)
+    last_name = gql.String(required=True)
 
 
-class PersonUpdateInput(InputObjectType):
-    first_name = String()
-    last_name = String()
+class PersonUpdateInput(gql.InputObjectType):
+    first_name = gql.String()
+    last_name = gql.String()
 
 
-class PersonOneInput(InputObjectType):
+class PersonOneInput(gql.InputObjectType):
     connect = PersonWhereUniqueInput(required=True)
 
 

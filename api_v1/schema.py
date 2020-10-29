@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import ObjectType, Schema
+import graphene as gql
 
 # Local packages
 from .domain.starship.schema import Query as StarshipQuery, Mutation as StarshipMutation
@@ -20,7 +20,7 @@ class Query(
     HumanQuery,
     DroidQuery,
     # The ObjectType class should be the last one always
-    ObjectType,
+    gql.ObjectType,
 ):
     pass
 
@@ -33,9 +33,9 @@ class Mutation(
     HumanMutation,
     DroidMutation,
     # The ObjectType class should be the last one always
-    ObjectType,
+    gql.ObjectType,
 ):
     pass
 
 
-schema = Schema(query=Query, mutation=Mutation)
+schema = gql.Schema(query=Query, mutation=Mutation)

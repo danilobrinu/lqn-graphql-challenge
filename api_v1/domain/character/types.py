@@ -1,15 +1,15 @@
 # Built-in packages
 
 # Third-party packages
-from graphene import Interface, ID, String, List
+import graphene as gql
 
 # Local packages
 from api_v1.domain.episode.types import Episode
 
 
-class Character(Interface):
+class Character(gql.Interface):
     """A Charater is an individual character within the Star Wars universe."""
 
-    id = ID()
-    name = String()
-    appears_in = List(Episode)
+    id = gql.ID()
+    name = gql.String()
+    appears_in = gql.List(Episode)
