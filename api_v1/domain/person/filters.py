@@ -1,55 +1,55 @@
 # Built-in packages
 
 # Third-party packages
-from django_filters import FilterSet, CharFilter
+import django_filters as df
 
 # Local packages
 from api_v1.domain.person import models
 
 
-class PersonFilter(FilterSet):
-    first_name = CharFilter(field_name="first_name", lookup_expr="iexact")
-    first_name_not = CharFilter(
+class PersonFilter(df.FilterSet):
+    first_name = df.CharFilter(field_name="first_name", lookup_expr="iexact")
+    first_name_not = df.CharFilter(
         field_name="first_name", lookup_expr="iexact", exclude=True
     )
-    first_name_contains = CharFilter(field_name="first_name", lookup_expr="contains")
-    first_name_not_contains = CharFilter(
+    first_name_contains = df.CharFilter(field_name="first_name", lookup_expr="contains")
+    first_name_not_contains = df.CharFilter(
         field_name="first_name", lookup_expr="icontains", exclude=True
     )
-    first_name_starts_with = CharFilter(
+    first_name_starts_with = df.CharFilter(
         field_name="first_name", lookup_expr="istartswith"
     )
-    first_name_not_starts_with = CharFilter(
+    first_name_not_starts_with = df.CharFilter(
         field_name="first_name", lookup_expr="istartswith"
     )
-    first_name_ends_with = CharFilter(field_name="first_name", lookup_expr="endswith")
-    first_name_not_ends_with = CharFilter(
+    first_name_ends_with = df.CharFilter(field_name="first_name", lookup_expr="endswith")
+    first_name_not_ends_with = df.CharFilter(
         field_name="first_name", lookup_expr="endswith", exclude=True
     )
-    first_name_in = CharFilter(field_name="first_name", lookup_expr="in")
-    first_name_not_in = CharFilter(
+    first_name_in = df.CharFilter(field_name="first_name", lookup_expr="in")
+    first_name_not_in = df.CharFilter(
         field_name="first_name", lookup_expr="in", exclude=True
     )
-    last_name = CharFilter(field_name="last_name", lookup_expr="iexact")
-    last_name_not = CharFilter(
+    last_name = df.CharFilter(field_name="last_name", lookup_expr="iexact")
+    last_name_not = df.CharFilter(
         field_name="last_name", lookup_expr="iexact", exclude=True
     )
-    last_name_contains = CharFilter(field_name="last_name", lookup_expr="contains")
-    last_name_not_contains = CharFilter(
+    last_name_contains = df.CharFilter(field_name="last_name", lookup_expr="contains")
+    last_name_not_contains = df.CharFilter(
         field_name="last_name", lookup_expr="icontains", exclude=True
     )
-    last_name_starts_with = CharFilter(
+    last_name_starts_with = df.CharFilter(
         field_name="last_name", lookup_expr="istartswith"
     )
-    last_name_not_starts_with = CharFilter(
+    last_name_not_starts_with = df.CharFilter(
         field_name="last_name", lookup_expr=["istartswith"]
     )
-    last_name_ends_with = CharFilter(field_name="last_name", lookup_expr="endswith")
-    last_name_not_ends_with = CharFilter(
+    last_name_ends_with = df.CharFilter(field_name="last_name", lookup_expr="endswith")
+    last_name_not_ends_with = df.CharFilter(
         field_name="last_name", lookup_expr="endswith", exclude=True
     )
-    last_name_in = CharFilter(field_name="last_name", lookup_expr="in")
-    last_name_not_in = CharFilter(
+    last_name_in = df.CharFilter(field_name="last_name", lookup_expr="in")
+    last_name_not_in = df.CharFilter(
         field_name="last_name", lookup_expr="in", exclude=True
     )
 

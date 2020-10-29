@@ -1,24 +1,24 @@
 # Built-in packages
 
 # Third-party packages
-from django_filters import FilterSet, CharFilter, NumberFilter
+import django_filters as df, NumberFilter
 
 # Local packages
 from api_v1.utils.filters import NumberInFilter, CharInFilter
 from api_v1.domain.starship import models
 
 
-class StarshipFilter(FilterSet):
-    name = CharFilter(field_name="name", lookup_expr="iexact")
-    name_not = CharFilter(field_name="name", lookup_expr="iexact", exclude=True)
-    name_contains = CharFilter(field_name="name", lookup_expr="icontains")
-    name_not_contains = CharFilter(
+class StarshipFilter(df.FilterSet):
+    name = df.CharFilter(field_name="name", lookup_expr="iexact")
+    name_not = df.CharFilter(field_name="name", lookup_expr="iexact", exclude=True)
+    name_contains = df.CharFilter(field_name="name", lookup_expr="icontains")
+    name_not_contains = df.CharFilter(
         field_name="name", lookup_expr="icontains", exclude=True
     )
-    name_starts_with = CharFilter(field_name="name", lookup_expr="istartswith")
-    name_not_starts_with = CharFilter(field_name="name", lookup_expr="istartswith")
-    name_ends_with = CharFilter(field_name="name", lookup_expr="iendswith")
-    name_not_ends_with = CharFilter(
+    name_starts_with = df.CharFilter(field_name="name", lookup_expr="istartswith")
+    name_not_starts_with = df.CharFilter(field_name="name", lookup_expr="istartswith")
+    name_ends_with = df.CharFilter(field_name="name", lookup_expr="iendswith")
+    name_not_ends_with = df.CharFilter(
         field_name="name", lookup_expr="iendswith", exclude=True
     )
     name_in = CharInFilter(field_name="name", lookup_expr="in")

@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphql_relay import from_global_id
+import graphql_relay as relay_gql
 
 # Local packages
 from api_v1.domain.droid import models, types, serializers
@@ -16,7 +16,7 @@ def create_droid(data: types.DroidCreateInput) -> models.Droid:
 
 
 def get_droid(where: types.DroidWhereUniqueInput) -> models.Droid:
-    _, droid_id = from_global_id(where.get("id"))
+    _, droid_id = relay_gql.from_global_id(where.get("id"))
     droid = models.Droid.objects.get(id=droid_id)
 
     return droid

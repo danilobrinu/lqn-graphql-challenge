@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphql_relay import from_global_id
+import graphql_relay as relay_gql
 
 # Local packages
 from api_v1.domain.human import models, types, serializers
@@ -16,7 +16,7 @@ def create_human(data: types.HumanCreateInput) -> models.Human:
 
 
 def get_human(where: types.HumanWhereUniqueInput) -> models.Human:
-    _, human_id = from_global_id(where.get())
+    _, human_id = relay_gql.from_global_id(where.get())
     human = models.Human.objects.get(id=human_id)
 
     return human

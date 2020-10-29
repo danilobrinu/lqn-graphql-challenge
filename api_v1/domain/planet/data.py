@@ -2,7 +2,7 @@
 from typing import Union
 
 # Third-party packages
-from graphql_relay import from_global_id
+import graphql_relay as relay_gql
 
 # Local packages
 from api_v1.domain.planet import models, types, serializers
@@ -17,7 +17,7 @@ def create_planet(data: types.PlanetCreateInput) -> models.Planet:
 
 
 def get_planet(where: types.PlanetWhereUniqueInput) -> models.Planet:
-    _, planet_id = from_global_id(where.get())
+    _, planet_id = relay_gql.from_global_id(where.get())
     planet = models.Planet.objects.get(id=planet_id)
 
     return planet

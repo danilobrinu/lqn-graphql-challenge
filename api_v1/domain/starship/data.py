@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-from graphql_relay import from_global_id
+import graphql_relay as relay_gql
 
 # Local packages
 from api_v1.domain.starship import models, types, serializers
@@ -16,7 +16,7 @@ def create_starship(data: types.StarshipCreateInput) -> models.Starship:
 
 
 def get_starship(where: types.StarshipWhereUniqueInput) -> models.Starship:
-    _, starship_id = from_global_id(where.get("id"))
+    _, starship_id = relay_gql.from_global_id(where.get("id"))
     starship = models.Starship.objects.get(id=starship_id)
     return starship
 
