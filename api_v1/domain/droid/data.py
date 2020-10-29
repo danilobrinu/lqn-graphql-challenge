@@ -1,5 +1,4 @@
 # Built-in packages
-from typing import Union
 
 # Third-party packages
 from graphql_relay import from_global_id
