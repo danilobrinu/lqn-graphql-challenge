@@ -2,12 +2,12 @@ from django.contrib import admin
 
 # Register your models here.
 
-from api_v1.domain.starship.models import Starship
-from api_v1.domain.person.models import Person
-from api_v1.domain.planet.models import Planet
-from api_v1.domain.episode.models import Episode
-from api_v1.domain.human.models import Human
-from api_v1.domain.droid.models import Droid
+from .domain.starship.models import Starship
+from .domain.person.models import Person
+from .domain.planet.models import Planet
+from .domain.episode.models import Episode
+from .domain.human.models import Human
+from .domain.droid.models import Droid
 
 
 @admin.register(Starship)

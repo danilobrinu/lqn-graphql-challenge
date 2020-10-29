@@ -1,7 +1,7 @@
 # Built-in packages
 
 # Third-party packages
-import django_filters as df, NumberFilter
+import django_filters as df
 
 # Local packages
 from api_v1.utils.filters import NumberInFilter, CharInFilter
@@ -23,12 +23,12 @@ class StarshipFilter(df.FilterSet):
     )
     name_in = CharInFilter(field_name="name", lookup_expr="in")
     name_not_in = CharInFilter(field_name="name", lookup_expr="in", exclude=True)
-    length = NumberFilter(field_name="length", lookup_expr="exact")
-    length_not = NumberFilter(field_name="length", lookup_expr="exact", exclude=True)
-    length_lt = NumberFilter(field_name="length", lookup_expr="lt")
-    length_lte = NumberFilter(field_name="length", lookup_expr="lte")
-    length_gt = NumberFilter(field_name="length", lookup_expr="gt")
-    length_gte = NumberFilter(field_name="length", lookup_expr="gte")
+    length = df.NumberFilter(field_name="length", lookup_expr="exact")
+    length_not = df.NumberFilter(field_name="length", lookup_expr="exact", exclude=True)
+    length_lt = df.NumberFilter(field_name="length", lookup_expr="lt")
+    length_lte = df.NumberFilter(field_name="length", lookup_expr="lte")
+    length_gt = df.NumberFilter(field_name="length", lookup_expr="gt")
+    length_gte = df.NumberFilter(field_name="length", lookup_expr="gte")
     length_in = NumberInFilter(field_name="length", lookup_expr="in")
     length_not_in = NumberInFilter(field_name="length", lookup_expr="in", exclude=True)
 
