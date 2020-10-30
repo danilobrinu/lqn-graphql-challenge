@@ -5,8 +5,7 @@ import graphene as gql
 from django.db.transaction import atomic
 
 # Local packages
-from api_v1.domain.droid import models, types
-from api_v1.domain.droid.data import get_droid, create_droid, update_droid, delete_droid
+from api_v1.domain.droid import models, types, crud
 
 
 class CreateDroid(types.DroidOutputMutation, gql.Mutation):
@@ -18,7 +17,7 @@ class CreateDroid(types.DroidOutputMutation, gql.Mutation):
     def mutate(
         _root: models.Droid, _info: gql.ResolveInfo, data: types.DroidCreateInput,
     ) -> models.Droid:
-        return create_droid(data)
+        return crud.create_droid(data)
 
 
 class UpdateDroid(types.DroidOutputMutation, gql.Mutation):
@@ -34,7 +33,7 @@ class UpdateDroid(types.DroidOutputMutation, gql.Mutation):
         where: types.DroidWhereUniqueInput,
         data: types.DroidUpdateInput,
     ) -> models.Droid:
-        return update_droid(where, data)
+        return crud.update_droid(where, data)
 
 
 class DeleteDroid(types.DroidOutputMutation, gql.Mutation):
@@ -46,19 +45,24 @@ class DeleteDroid(types.DroidOutputMutation, gql.Mutation):
     def mutate(
         _root: models.Droid, _info: gql.ResolveInfo, where: types.DroidWhereUniqueInput,
     ) -> models.Droid:
-        return delete_droid(where)
+        return crud.delete_droid(where)
 
 
 class Query(gql.ObjectType):
     droid = gql.Field(types.Droid, where=types.DroidWhereUniqueInput(required=True))
-    droids = types.DroidFilterConnectionField(
-        types.Droid, where=types.DroidWhereInput()
+    droids = gql.Field(
+        gql.List(gql.NonNull(types.Droid)), where=types.DroidWhereInput()
     )
 
     def resolve_droid(
         _root: models.Droid, _info: gql.ResolveInfo, where: types.DroidWhereUniqueInput
-    ):
-        return get_droid(where)
+    ) -> models.Droid:
+        return crud.get_droid(where)
+
+    def resolve_droids(
+        _root: models.Droid, _info: gql.ResolveInfo, where: types.DroidWhereInput
+    ) -> list[models.Droid]:
+        return crud.get_droids(where)
 
 
 class Mutation(gql.ObjectType):

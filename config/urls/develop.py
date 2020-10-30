@@ -11,4 +11,5 @@ from api_v1.schema import schema as api_v1_schema
 
 urlpatterns += [
     path("graphql/v1", csrf_exempt(GraphQLView.as_view(schema=api_v1_schema))),
+    path("graphiql/v1", csrf_exempt(GraphQLView.as_view(schema=api_v1_schema, graphiql=True))),
 ]

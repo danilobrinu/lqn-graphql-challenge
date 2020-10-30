@@ -5,13 +5,7 @@ import graphene as gql
 from django.db.transaction import atomic
 
 # Local packages
-from api_v1.domain.planet import models, types
-from api_v1.domain.planet.data import (
-    create_planet,
-    get_planet,
-    update_planet,
-    delete_planet,
-)
+from api_v1.domain.planet import models, types, crud
 
 
 class CreatePlanet(types.PlanetOutputMutation, gql.Mutation):
@@ -23,7 +17,7 @@ class CreatePlanet(types.PlanetOutputMutation, gql.Mutation):
     def mutate(
         _root: models.Planet, _info: gql.ResolveInfo, data: types.PlanetCreateInput
     ) -> models.Planet:
-        return create_planet(data)
+        return crud.create_planet(data)
 
 
 class UpdatePlanet(types.PlanetOutputMutation, gql.Mutation):
@@ -39,7 +33,7 @@ class UpdatePlanet(types.PlanetOutputMutation, gql.Mutation):
         where: types.PlanetWhereUniqueInput,
         data: types.PlanetUpdateInput,
     ) -> models.Planet:
-        return update_planet(where, data)
+        return crud.update_planet(where, data)
 
 
 class DeletePlanet(types.PlanetOutputMutation, gql.Mutation):
@@ -53,7 +47,7 @@ class DeletePlanet(types.PlanetOutputMutation, gql.Mutation):
         _info: gql.ResolveInfo,
         where: types.PlanetWhereUniqueInput,
     ) -> models.Planet:
-        return delete_planet(where)
+        return crud.delete_planet(where)
 
 
 class Query(gql.ObjectType):
@@ -66,8 +60,13 @@ class Query(gql.ObjectType):
         _root: models.Planet,
         _info: gql.ResolveInfo,
         where: types.PlanetWhereUniqueInput,
-    ):
-        return get_planet(where)
+    ) -> models.Planet:
+        return crud.get_planet(where)
+
+    def resolve_planets(
+        _root: models.Planet, _info: gql.ResolveInfo, where: types.PlanetWhereInput
+    ) -> list[models.Planet]:
+        return crud.get_planets(where)
 
 
 class Mutation(gql.ObjectType):

@@ -4,7 +4,18 @@
 import graphql_relay as relay_gql
 
 # Local packages
-from api_v1.domain.droid import models, types, serializers
+from api_v1.domain.droid import models, types, serializers, filters
+
+
+def get_droid(where: types.DroidWhereUniqueInput) -> models.Droid:
+    _, droid_id = relay_gql.from_global_id(where.get("id"))
+    droid = models.Droid.objects.get(id=droid_id)
+
+    return droid
+
+
+def get_droids(where: types.DroidWhereInput) -> list[models.Droid]:
+    return filters.DroidFilter(where).qs
 
 
 def create_droid(data: types.DroidCreateInput) -> models.Droid:
@@ -13,13 +24,6 @@ def create_droid(data: types.DroidCreateInput) -> models.Droid:
     serializer.save()
 
     return serializer.instance
-
-
-def get_droid(where: types.DroidWhereUniqueInput) -> models.Droid:
-    _, droid_id = relay_gql.from_global_id(where.get("id"))
-    droid = models.Droid.objects.get(id=droid_id)
-
-    return droid
 
 
 def update_droid(

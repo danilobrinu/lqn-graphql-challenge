@@ -4,7 +4,18 @@
 import graphql_relay as relay_gql
 
 # Local packages
-from api_v1.domain.human import models, types, serializers
+from api_v1.domain.human import models, types, serializers, filters
+
+
+def get_human(where: types.HumanWhereUniqueInput) -> models.Human:
+    _, human_id = relay_gql.from_global_id(where.get())
+    human = models.Human.objects.get(id=human_id)
+
+    return human
+
+
+def get_humans(where: types.HumanWhereInput) -> list[models.Human]:
+    return filters.HumanFilter(where).qs
 
 
 def create_human(data: types.HumanCreateInput) -> models.Human:
@@ -13,13 +24,6 @@ def create_human(data: types.HumanCreateInput) -> models.Human:
     serializer.save()
 
     return serializer.instance
-
-
-def get_human(where: types.HumanWhereUniqueInput) -> models.Human:
-    _, human_id = relay_gql.from_global_id(where.get())
-    human = models.Human.objects.get(id=human_id)
-
-    return human
 
 
 def update_human(

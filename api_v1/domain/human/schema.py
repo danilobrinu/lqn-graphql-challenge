@@ -5,8 +5,7 @@ import graphene as gql
 from django.db.transaction import atomic
 
 # Local packages
-from api_v1.domain.human import models, types
-from api_v1.domain.human.data import get_human, create_human, update_human, delete_human
+from api_v1.domain.human import models, types, crud
 
 
 class CreateHuman(types.HumanOutputMutation, gql.Mutation):
@@ -18,7 +17,7 @@ class CreateHuman(types.HumanOutputMutation, gql.Mutation):
     def mutate(
         _root: models.Human, info: gql.ResolveInfo, data: types.HumanCreateInput
     ) -> models.Human:
-        return create_human(data)
+        return crud.create_human(data)
 
 
 class UpdateHuman(types.HumanOutputMutation, gql.Mutation):
@@ -34,7 +33,7 @@ class UpdateHuman(types.HumanOutputMutation, gql.Mutation):
         where: types.HumanWhereUniqueInput,
         data: types.HumanUpdateInput,
     ):
-        return update_human(where, data)
+        return crud.update_human(where, data)
 
 
 class DeleteHuman(types.HumanOutputMutation, gql.Mutation):
@@ -46,19 +45,24 @@ class DeleteHuman(types.HumanOutputMutation, gql.Mutation):
     def mutate(
         _root: models.Human, _info: gql.ResolveInfo, where: types.HumanWhereUniqueInput
     ) -> models.Human:
-        return delete_human(where)
+        return crud.delete_human(where)
 
 
 class Query(gql.ObjectType):
     human = gql.Field(types.Human, where=types.HumanWhereUniqueInput(required=True))
-    humans = types.HumanFilterConnectionField(
-        types.Human, where=types.HumanWhereInput()
+    humans = gql.Field(
+        gql.List(gql.NonNull(types.Human)), where=types.HumanWhereInput()
     )
 
     def resolve_human(
         _root: models.Human, _info: gql.ResolveInfo, where: types.HumanWhereUniqueInput
-    ):
-        return get_human(where)
+    ) -> models.Human:
+        return crud.get_human(where)
+
+    def resolve_humans(
+        _root: models.Human, _info: gql.ResolveInfo, where: types.HumanWhereInput
+    ) -> list[models.Human]:
+        return crud.get_humans(where)
 
 
 class Mutation(gql.ObjectType):

@@ -1,10 +1,22 @@
 # Built-in packages
 
 # Third-party packages
+from api_v1.domain.person.models import Person
 import graphql_relay as relay_gql
 
 # Local packages
-from api_v1.domain.person import models, types, serializers
+from api_v1.domain.person import models, types, serializers, filters
+
+
+def get_person(where: types.PersonWhereUniqueInput) -> models.Person:
+    _, person_id = relay_gql.from_global_id(where.get())
+    person = models.Person.objects.get(id=person_id)
+
+    return person
+
+
+def get_persons(where: types.PersonWhereInput) -> list[models.Person]:
+    return filters.PersonFilter(where).qs
 
 
 def create_person(data: types.PersonCreateInput) -> models.Person:
@@ -13,13 +25,6 @@ def create_person(data: types.PersonCreateInput) -> models.Person:
     serializer.save()
 
     return serializer.instance
-
-
-def get_person(where: types.PersonWhereUniqueInput) -> models.Person:
-    _, person_id = relay_gql.from_global_id(where.get())
-    person = models.Person.objects.get(id=person_id)
-
-    return person
 
 
 def update_person(

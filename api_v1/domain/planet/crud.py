@@ -5,7 +5,18 @@ from typing import Union
 import graphql_relay as relay_gql
 
 # Local packages
-from api_v1.domain.planet import models, types, serializers
+from api_v1.domain.planet import models, types, serializers, filters
+
+
+def get_planet(where: types.PlanetWhereUniqueInput) -> models.Planet:
+    _, planet_id = relay_gql.from_global_id(where.get())
+    planet = models.Planet.objects.get(id=planet_id)
+
+    return planet
+
+
+def get_planets(where: types.PlanetWhereInput) -> list[models.Planet]:
+    return filters.PlanetFilter(where).qs
 
 
 def create_planet(data: types.PlanetCreateInput) -> models.Planet:
@@ -14,13 +25,6 @@ def create_planet(data: types.PlanetCreateInput) -> models.Planet:
     serializer.save()
 
     return serializer.instance
-
-
-def get_planet(where: types.PlanetWhereUniqueInput) -> models.Planet:
-    _, planet_id = relay_gql.from_global_id(where.get())
-    planet = models.Planet.objects.get(id=planet_id)
-
-    return planet
 
 
 def update_planet(

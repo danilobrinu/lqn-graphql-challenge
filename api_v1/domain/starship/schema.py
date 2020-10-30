@@ -5,13 +5,7 @@ import graphene as gql
 from django.db.transaction import atomic
 
 # Local packages
-from api_v1.domain.starship import models, types, filters
-from api_v1.domain.starship.data import (
-    get_starship,
-    create_starship,
-    update_starship,
-    delete_starship,
-)
+from api_v1.domain.starship import models, types, filters, crud
 
 
 class CreateStarship(types.StarshipOutputMutation, gql.Mutation):
@@ -23,7 +17,7 @@ class CreateStarship(types.StarshipOutputMutation, gql.Mutation):
     def mutate(
         _root: models.Starship, _info: gql.ResolveInfo, data: types.StarshipCreateInput
     ) -> models.Starship:
-        return create_starship(data)
+        return crud.create_starship(data)
 
 
 class UpdateStarship(types.StarshipOutputMutation, gql.Mutation):
@@ -39,7 +33,7 @@ class UpdateStarship(types.StarshipOutputMutation, gql.Mutation):
         where: types.StarshipWhereUniqueInput,
         data: types.StarshipUpdateInput,
     ) -> models.Starship:
-        return update_starship(where, data)
+        return crud.update_starship(where, data)
 
 
 class DeleteStarship(types.StarshipOutputMutation, gql.Mutation):
@@ -67,19 +61,19 @@ class Query(gql.ObjectType):
         types.Starship, where=types.StarshipWhereInput()
     )
 
-    def resolve_starships(
-        _root: models.Starship,
-        _info: gql.ResolveInfo,
-        where: types.StarshipWhereUniqueInput = None,
-    ):
-        return filters.StarshipFilter(data=where).queryset
-
     def resolve_starship(
         _root: models.Starship,
         _info: gql.ResolveInfo,
         where: types.StarshipWhereUniqueInput,
-    ):
-        return get_starship(where)
+    ) -> models.Starship:
+        return crud.get_starship(where)
+
+    def resolve_starships(
+        _root: models.Starship,
+        _info: gql.ResolveInfo,
+        where: types.StarshipWhereUniqueInput = None,
+    ) -> list[models.Starship]:
+        return crud.get_starships(where)
 
 
 class Mutation(gql.ObjectType):
