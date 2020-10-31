@@ -13,6 +13,7 @@ def create_open_crud_filter_connection_field(
     name, filterset_class
 ) -> Annotated[Any, "OpenCrudFilterConnectionField"]:
     @classmethod
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_queryset(
         cls, connection, iterable, info, args, filtering_args, **kwargs
     ):
@@ -31,4 +32,3 @@ def create_open_crud_filter_connection_field(
     return type(
         name, (DjangoFilterConnectionField,), {"resolve_queryset": resolve_queryset}
     )
-

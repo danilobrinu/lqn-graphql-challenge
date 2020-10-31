@@ -1,11 +1,10 @@
 # Built-in packages
 
 # Third-party packages
-from api_v1.domain.person.models import Person
 import graphql_relay as relay_gql
 
 # Local packages
-from api_v1.domain.person import models, types, serializers, filters
+from . import models, types, serializers, filters
 
 
 def get_person(where: types.PersonWhereUniqueInput) -> models.Person:

@@ -5,7 +5,7 @@ import graphene as gql
 from django.db.transaction import atomic
 
 # Local packages
-from api_v1.domain.starship import models, types, filters, crud
+from api_v1.domain.starship import models, types, crud
 
 
 class CreateStarship(types.StarshipOutputMutation, gql.Mutation):
@@ -47,7 +47,7 @@ class DeleteStarship(types.StarshipOutputMutation, gql.Mutation):
         _info: gql.ResolveInfo,
         where: types.StarshipWhereUniqueInput,
     ) -> models.Starship:
-        return delete_starship(where)
+        return crud.delete_starship(where)
 
 
 class Query(gql.ObjectType):
@@ -61,6 +61,7 @@ class Query(gql.ObjectType):
         types.Starship, where=types.StarshipWhereInput()
     )
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_starship(
         _root: models.Starship,
         _info: gql.ResolveInfo,
@@ -68,6 +69,7 @@ class Query(gql.ObjectType):
     ) -> models.Starship:
         return crud.get_starship(where)
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_starships(
         _root: models.Starship,
         _info: gql.ResolveInfo,

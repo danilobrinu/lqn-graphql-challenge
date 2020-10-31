@@ -5,7 +5,7 @@ import graphene as gql
 from django.db.transaction import atomic
 
 # Local packages
-from api_v1.domain.human import models, types, crud
+from . import models, types, crud
 
 
 class CreateHuman(types.HumanOutputMutation, gql.Mutation):
@@ -54,11 +54,13 @@ class Query(gql.ObjectType):
         gql.List(gql.NonNull(types.Human)), where=types.HumanWhereInput()
     )
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_human(
         _root: models.Human, _info: gql.ResolveInfo, where: types.HumanWhereUniqueInput
     ) -> models.Human:
         return crud.get_human(where)
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_humans(
         _root: models.Human, _info: gql.ResolveInfo, where: types.HumanWhereInput
     ) -> list[models.Human]:

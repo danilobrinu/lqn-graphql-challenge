@@ -4,7 +4,7 @@
 import graphql_relay as relay_gql
 
 # Local packages
-from api_v1.domain.human import models, types, serializers, filters
+from . import models, types, serializers, filters
 
 
 def get_human(where: types.HumanWhereUniqueInput) -> models.Human:

@@ -5,7 +5,7 @@ import graphene as gql
 from django.db.transaction import atomic
 
 # Local packages
-from api_v1.domain.episode import models, types, crud
+from . import models, types, crud
 
 
 class CreateEpisode(types.EpisodeOutputMutation, gql.Mutation):
@@ -58,6 +58,7 @@ class Query(gql.ObjectType):
         gql.List(gql.NonNull(types.Episode)), where=types.EpisodeWhereInput()
     )
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_episode(
         _root: models.Episode,
         _info: gql.ResolveInfo,
@@ -65,6 +66,7 @@ class Query(gql.ObjectType):
     ) -> models.Episode:
         return crud.get_episode(where)
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_episodes(
         _root: models.Episode, _info: gql.ResolveInfo, where: types.EpisodeWhereInput
     ) -> list[models.Episode]:

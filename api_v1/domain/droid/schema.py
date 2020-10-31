@@ -5,7 +5,7 @@ import graphene as gql
 from django.db.transaction import atomic
 
 # Local packages
-from api_v1.domain.droid import models, types, crud
+from . import models, types, crud
 
 
 class CreateDroid(types.DroidOutputMutation, gql.Mutation):
@@ -54,11 +54,13 @@ class Query(gql.ObjectType):
         gql.List(gql.NonNull(types.Droid)), where=types.DroidWhereInput()
     )
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_droid(
         _root: models.Droid, _info: gql.ResolveInfo, where: types.DroidWhereUniqueInput
     ) -> models.Droid:
         return crud.get_droid(where)
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_droids(
         _root: models.Droid, _info: gql.ResolveInfo, where: types.DroidWhereInput
     ) -> list[models.Droid]:

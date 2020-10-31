@@ -56,6 +56,7 @@ class Query(gql.ObjectType):
         types.Planet, where=types.PlanetWhereInput()
     )
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_planet(
         _root: models.Planet,
         _info: gql.ResolveInfo,
@@ -63,6 +64,7 @@ class Query(gql.ObjectType):
     ) -> models.Planet:
         return crud.get_planet(where)
 
+    # skipcq: PYL-E0213, PYL-R0201
     def resolve_planets(
         _root: models.Planet, _info: gql.ResolveInfo, where: types.PlanetWhereInput
     ) -> list[models.Planet]:
