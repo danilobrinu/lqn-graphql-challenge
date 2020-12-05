@@ -1,4 +1,4 @@
-[![DeepSource](https://deepsource.io/gh/danilobrinu/lqn-graphql-challenge.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/danilobrinu/lqn-graphql-challenge/?ref=repository-badge)
+[![DeepSource](https://deepsource.io/gh/dbritto-dev/lqn-graphql-challenge.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/dbritto-dev/lqn-graphql-challenge/?ref=repository-badge)
 
 # Create dependencies for Development Workflow
 
